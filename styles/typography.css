@@ -1,0 +1,56 @@
+/* @font-face definitions */
+@font-face {
+  font-family: "Platypi";
+  src: url("../fonts/Platypi--variable.ttf");
+  font-weight: 700 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Overpass";
+  src: url("../fonts/Overpass--variable.ttf");
+  font-weight: 400 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Overpass";
+  src: url("../fonts/Overpass--variable--italic.ttf");
+  font-weight: 400 700;
+  font-style: italic;
+}
+
+:root {
+  /* Font families */
+  --heading-font-family: "Platypi", serif;
+  --body-font-family: "Overpass", sans-serif;
+  /* Weights */
+  --heading-weight: 800;
+  --subheading-weight: 700;
+  --body-bold-weight: 700;
+  --body-regular-weight: 400;
+
+  /* Type scale */
+  font-size: 16px;
+  --text-scale-ratio: 1.2;
+
+  --text-heading-size: calc(1rem * var(--text-scale-ratio) * var(--text-scale-ratio)
+                              * var(--text-scale-ratio) * var(--text-scale-ratio)
+                              * var(--text-scale-ratio) * var(--text-scale-ratio));
+  --text-subheading-size: calc(1rem * var(--text-scale-ratio) * var(--text-scale-ratio)
+                                * var(--text-scale-ratio));
+  --text-body-size: 1rem;
+  --text-body-size--large: calc(1rem * var(--text-scale-ratio));
+  --text-body-size--small: calc(1rem / var(--text-scale-ratio));
+
+  /* Spacing (included here since related to the above) */
+  --space-sm: 0.5em;
+  --space-md: 1em;
+  --space-lg: 1.75em;
+}
+
+@media (min-width: 85em) {
+  :root {
+    font-size: 24px;
+  }
+}

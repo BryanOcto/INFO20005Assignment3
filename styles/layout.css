@@ -1,0 +1,45 @@
+/* Most of these are taken from lectures or workshops */
+
+/* Cluster */
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.cluster > * + * {
+  margin-left: var(--space-sm);
+}
+
+/* Stack */
+.stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.stack > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* .stack--space-sm > * + * {
+  margin-top: var(--space-sm);
+}
+
+.stack--space-md > * + * {
+  margin-top: var(--space-md);
+}
+
+.stack--space-lg > * + * {
+  margin-top: var(--space-lg);
+} */
+
+/* My version of centre: Centring everything inside */
+.centre {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

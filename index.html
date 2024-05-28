@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="styles/reset.css">
   <link rel="stylesheet" href="styles/colours.css">
   <link rel="stylesheet" href="styles/typography.css">
+  <link rel="stylesheet" href="styles/misc.css">
   <link rel="stylesheet" href="styles/layout.css">
   <link rel="stylesheet" href="styles/components.css">
 
@@ -23,20 +24,20 @@
 </head>
 <body>
   <header>
-    <a href="index.html"><img src="/images/raster/BerserKeys-Logo--square.jpg" alt="BerserKeys logo; Home page"></a>
-    <nav>
-      <ul>
+    <nav class="cluster nav--hidden">
+      <a href="index.html" class="nav__logo"><img src="/images/raster/BerserKeys-Logo--square.jpg" alt="BerserKeys logo; Home page"></a>
+      <ul class="nav__link-list hidden">
         <li><a href="#">Products</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Blog</a></li>
         <li><a href="#">Offers</a></li>
         <li><a href="#">Coming Soon</a></li>
       </ul>
-      <div>
-        <a href="#"><img src="/images/svg/accountCircle.svg" alt="Account page"></a>
-        <button><img src="/images/svg/search.svg" alt="Search menu"></button>
-        <a href="shopping-cart.html"><img src="/images/svg/shoppingCart.svg" alt="Shopping cart"></a>
-        <button><img src="images/svg/arrowUp.svg" alt="Open mobile navigation menu"></button>
+      <div class="cluster">
+        <a href="#" class="centre nav__icon-group__icon"><img src="/images/svg/accountCircle.svg" alt="Account page"></a>
+        <button class="centre nav__icon-group__icon"><img src="/images/svg/search.svg" alt="Search menu"></button>
+        <a href="centre shopping-cart.html" class="centre nav__icon-group__icon"><img src="/images/svg/shoppingCart.svg" alt="Shopping cart"></a>
+        <button class="centre nav__icon-group__icon nav__icon-group__icon--filled nav__open-button" id="openButton" onclick="toggleMenu()"><img src="images/svg/arrowUp.svg" alt="Open mobile navigation menu"></button>
       </div>
     </nav>
   </header>
@@ -111,5 +112,6 @@
         </div>
       </section>
   </main>
+  <script type="text/javascript" src="scripts/nav.js"></script>
 </body>
 </html>

@@ -42,15 +42,10 @@
   --text-body-size: 1rem;
   --text-body-size--large: calc(1rem * var(--text-scale-ratio));
   --text-body-size--small: calc(1rem / var(--text-scale-ratio));
-
-  /* Spacing (included here since related to the above) */
-  --space-sm: 0.5em;
-  --space-md: 1em;
-  --space-lg: 1.75em;
 }
 
 @media (min-width: 85em) {
   :root {
-    font-size: 24px;
+    font-size: 20px;
   }
 }

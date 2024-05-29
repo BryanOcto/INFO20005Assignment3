@@ -9,9 +9,9 @@
   flex-direction: row;
 }
 
-.cluster > * + * {
+/* .cluster > * + * {
   margin-left: var(--space-sm);
-}
+} */
 
 /* Stack */
 .stack {
@@ -43,3 +43,5 @@
   align-items: center;
   justify-content: center;
 }
+
+/* max-width on content wrapper to prevent increase in width. */

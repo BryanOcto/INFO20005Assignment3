@@ -44,7 +44,29 @@
   --text-body-size--small: calc(1rem / var(--text-scale-ratio));
 }
 
+/* Default styles for fonts */
+p, input, li {
+  line-height: var(--text-scale-ratio);
+}
+p, input, li {
+  font-family: var(--body-font-family);
+  font-weight: var(--body-regular-weight);
+  font-size: var(--text-body-size);
+}
+h1, h2 {
+  font-family: var(--heading-font-family);
+  font-weight: var(--heading-weight);
+  font-size: var(--text-heading-size);
+}
+h1 {
+  color: var(--colour-primary--light);
+}
+h2 {
+  color: var(--colour-primary--dark);
+}
+
 @media (min-width: 85em) {
+  /* Made smaller than in design for more appropriate proportions on most devices. */
   :root {
     font-size: 20px;
   }

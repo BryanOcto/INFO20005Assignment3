@@ -35,82 +35,118 @@
       </ul>
       <div class="cluster">
         <a href="#" class="centre nav__icon-group__icon"><img src="/images/svg/accountCircle.svg" alt="Account page"></a>
-        <button class="centre nav__icon-group__icon"><img src="/images/svg/search.svg" alt="Search menu"></button>
+        <button class="centre nav__icon-group__icon" onclick="navToSearch()"><img src="/images/svg/search.svg" alt="Search menu"></button>
         <a href="centre shopping-cart.html" class="centre nav__icon-group__icon"><img src="/images/svg/shoppingCart.svg" alt="Shopping cart"></a>
         <button class="centre nav__icon-group__icon nav__icon-group__icon--filled nav__open-button" id="openButton" onclick="toggleMenu()"><img src="images/svg/arrowUp.svg" alt="Open mobile navigation menu"></button>
       </div>
     </nav>
+    <section class="cluster search hidden" role="search">
+      <!-- In desktop, removed logo home button and kept mobile aesthetic to close search because it made more sense to code and doesn't significantly hamper UI/UX. Increases consistency too. -->
+      <input class="search__input" type="search" name="search" placeholder="e.g. switches, AULA F68, ...">
+      <button class="search__close" onclick="searchToNav()"><img src="images/svg/close.svg" alt="Close search menu"></button>
+      <div class="search__group">
+        <div class="search__group__intro max-width">
+          <h2>What are you looking for?</h2>
+          <p>Examples of what you could look up:</p>
+          <ul>
+            <li><span>Product categories</span></li>
+            <li><span>Products</span></li>
+            <li><span>Blog articles</span></li>
+          </ul>
+        </div>
+        <div class="search__group__results hidden">
+          <div class="categories-blog">
+            <h2>Categories</h2>
+            <div class="category-card">
+              <!-- alt left empty for category images since they are decorative. -->
+              <img src="/images/raster/switchesCategory.png" alt="">
+              <h3>Switches</h3>
+              <p>Our collection of switches for mechanical keyboards.</p>
+            </div>
+            <!-- <h2>Blog</h2>
+            <div class="blog-card">
+              <img src="/images/raster/blogImage.png" alt="">
+              <h3>Comparing types of mechanical keyboard switches</h3>
+              <p>by Martin Zhang | 25/10/2023</p>
+            </div> -->
+          </div>
+          <div class="products">
+
+          </div>
+        </div>
+      </div>
+    </section>
   </header>
   <main>
-      <section>
-        <img src="/images/svg/decorativePattern.svg" alt="">
-        <img src="/images/raster/vikingCharacter1--no-bg.png" alt="">
-        <h1>Welcome!</h1>
-        <p>Creative, enthusiastic, and versatile <span>mechanical keyboards</span> and accessories</p>
-        <a href="#">About us</a>
-      </section>
-      <section>
-        <h2>Categories</h2>
-        <p>Shop conveniently by category.</p>
+    <section>
+      <img src="/images/svg/decorativePattern.svg" alt="">
+      <img src="/images/raster/vikingCharacter1--no-bg.png" alt="">
+      <h1>Welcome!</h1>
+      <p>Creative, enthusiastic, and versatile <span>mechanical keyboards</span> and accessories</p>
+      <a href="#">About us</a>
+    </section>
+    <section>
+      <h2>Categories</h2>
+      <p>Shop conveniently by category.</p>
+      <div>
+        <p>Mechanical Keyboards</p>
+        <p>Our range of mechanical keyboards.</p>
+      </div>
+    </section>
+    <section>
+      <h2>Featured</h2>
+      <p>If you only buy one, buy one of these products.</p>
+      <div>
         <div>
-          <p>Mechanical Keyboards</p>
-          <p>Our range of mechanical keyboards.</p>
-        </div>
-      </section>
-      <section>
-        <h2>Featured</h2>
-        <p>If you only buy one, buy one of these products.</p>
-        <div>
+          <img src="images/raster/AULAF87Pro1.png" alt="AULA F87 Pro Keyboard">
           <div>
-            <img src="images/raster/AULAF87Pro1.png" alt="AULA F87 Pro Keyboard">
             <div>
-              <div>
-                <p>AULA F87 Pro</p>
-                <ul>
-                  <li>TKL 80% Layout</li>
-                  <li>Tri-Mode</li>
-                  <li>Mechanical Keyboard</li>
-                </ul>
-              </div>
-              <div>
-                <p>-8%</p>
-                <p>AUD$<br>100.95</p>
-                <p>AUD$<br>109.95</p>
-              </div>
+              <p>AULA F87 Pro</p>
+              <ul>
+                <li>TKL 80% Layout</li>
+                <li>Tri-Mode</li>
+                <li>Mechanical Keyboard</li>
+              </ul>
+            </div>
+            <div>
+              <p>-8%</p>
+              <p>AUD$<br>100.95</p>
+              <p>AUD$<br>109.95</p>
             </div>
           </div>
-          <!-- More product cards here -->
         </div>
-      </section>
-      <section>
-        <h2>About us</h2>
-        <p>Inspired by the Viking warrior characters in some games, I came up with the brand name “BerserKeys” which is a combination of “Berserk” and “Keys”, meaning we are die-hard enthusiasts of custom mechanical keyboards, and will strive to bring this passion and expertise to people like us.</p>
-        <p>Our vision is to bring endless fun and added value to our customers by providing creative and novel products and friendly services at reasonable prices.</p>
-        <p>We believe that by working with you, our customers, we can build more powerful weapons for your requirements, whether it is gaming, working or anything else.</p>
-        <p>That way, you can easily <span>GO BERSERK</span> for the things you love when you need to.</p>
-      </section>
-      <section>
-        <h2>News & Events</h2>
-        <p>Sign up to our newsletter and get all the latest news and offers!</p>
-        <form action="">
-          <label>
-            Email
-            <input type="email" name="email" autocomplete="email">
-          </label>
-          <button type="submit">Subscribe!</button>
-          <label>
-            <input type="checkbox" name="keepUpdated">
-            Keep me up to date on news and offers
-          </label>
-          <p>For more information on how we process your data for marketing communication, check our <a href="#">Privacy policy</a>.</p>
-        </form>
-        <div>
-          <a href="https://www.instagram.com/berserkeys/"><img src="/images/svg/instagramIcon.svg" alt="BerserKeys' Instagram"></a>
-          <a href="https://www.tiktok.com/@berserkeys"><img src="/images/svg/tiktokIcon.svg" alt="BerserKeys' TikTok"></a>
-          <a href="https://www.youtube.com/channel/UC74ViUwKE9yoXw4LH2ppmXA"><img src="/images/svg/youtubeIcon.svg" alt="BerserKeys' YouTube"></a>
-          <a href="https://www.pinterest.com.au/Berserkeys"><img src="/images/svg/pinterestIcon.svg" alt="BerserKeys' Pinterest"></a>
-        </div>
-      </section>
+        <!-- More product cards here -->
+      </div>
+    </section>
+    <section>
+      <h2>About us</h2>
+      <p>Inspired by the Viking warrior characters in some games, I came up with the brand name “BerserKeys” which is a combination of “Berserk” and “Keys”, meaning we are die-hard enthusiasts of custom mechanical keyboards, and will strive to bring this passion and expertise to people like us.</p>
+      <p>Our vision is to bring endless fun and added value to our customers by providing creative and novel products and friendly services at reasonable prices.</p>
+      <p>We believe that by working with you, our customers, we can build more powerful weapons for your requirements, whether it is gaming, working or anything else.</p>
+      <p>That way, you can easily <span>GO BERSERK</span> for the things you love when you need to.</p>
+    </section>
+    <section>
+      <h2>News & Events</h2>
+      <p>Sign up to our newsletter and get all the latest news and offers!</p>
+      <form action="">
+        <label>
+          Email
+          <input type="email" name="email" autocomplete="email">
+        </label>
+        <button type="submit">Subscribe!</button>
+        <label>
+          <input type="checkbox" name="keepUpdated">
+          Keep me up to date on news and offers
+        </label>
+        <p>For more information on how we process your data for marketing communication, check our <a href="#">Privacy policy</a>.</p>
+      </form>
+      <div>
+        <a href="https://www.instagram.com/berserkeys/"><img src="/images/svg/instagramIcon.svg" alt="BerserKeys' Instagram"></a>
+        <a href="https://www.tiktok.com/@berserkeys"><img src="/images/svg/tiktokIcon.svg" alt="BerserKeys' TikTok"></a>
+        <a href="https://www.youtube.com/channel/UC74ViUwKE9yoXw4LH2ppmXA"><img src="/images/svg/youtubeIcon.svg" alt="BerserKeys' YouTube"></a>
+        <a href="https://www.pinterest.com.au/Berserkeys"><img src="/images/svg/pinterestIcon.svg" alt="BerserKeys' Pinterest"></a>
+      </div>
+    </section>
   </main>
   <script type="text/javascript" src="scripts/nav.js"></script>
 </body>

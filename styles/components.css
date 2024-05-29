@@ -9,7 +9,7 @@ button {
   cursor: pointer;
 }
 
-/* NAVIGATION BAR */
+/* HEADER */
 /* Mobile */
 header {
   position: fixed;
@@ -19,17 +19,18 @@ header {
   z-index: 100;
 }
 
-nav {
+nav, .search {
   --icon-size: 40px;
   --button-size: 70px;
   --transition-duration: .3s;
   position: relative;
+  height: min-content;
   background-color: var(--white);
   border-top: var(--standard-border);
   box-shadow: var(--standard-up-shadow);
 }
 /* The coloured overlay when menu is opened */
-nav::before {
+nav::before, .search::before {
   content: "";
   display: block;
   position: absolute;
@@ -40,9 +41,9 @@ nav::before {
   background-color: var(--black--translucent);
   z-index: -2;
   opacity: 0;
-  transition: opacity var(--transition-duration);
+  transition: opacity var(--transition-duration) linear;
 }
-.nav--active::before {
+.nav--active::before, .search--active::before {
   opacity: 1;
 }
 
@@ -54,24 +55,26 @@ nav::before {
   height: var(--icon-size);
 }
 
-.nav__link-list {
-  display: flex;
+.nav__link-list, .search__group {
   position: absolute;
   z-index: -1;
   bottom: 100%;
   left: 0;
   right: 0;
-  margin-left: 0;
+}
+.nav__link-list, .search__group {
+  transform: translateY(100%);
+  transition: transform var(--transition-duration);
+}
+.nav__link-list {
+  display: flex;
   padding: var(--space-sm) var(--space-md);
   flex-direction: column-reverse;
   box-shadow: var(--standard-up-shadow);
 
-  transform: translateY(100%);
-  transition: transform var(--transition-duration);
-
   background-color: var(--white);
 }
-.nav__link-list--active {
+.nav__link-list--active, .search--active > .search__group {
   transform: translateY(0);
 }
 .nav__link-list > li {
@@ -93,7 +96,7 @@ nav::before {
 .nav__icon-group {
   display: flex;
 }
-.nav__icon-group__icon {
+.nav__icon-group__icon, .search__close {
   width: var(--button-size);
   height: var(--button-size);
   margin: 0;
@@ -101,10 +104,10 @@ nav::before {
   background: none;
   border: none;
 }
-.nav__icon-group__icon--filled {
+.nav__icon-group__icon--filled, .search__close {
   background-color: var(--colour-secondary--medium-contrast);
 }
-.nav__icon-group__icon > img {
+.nav__icon-group__icon > img, .search__close > img {
   display: inline-block;
   width: var(--icon-size);
   height: var(--icon-size);
@@ -116,6 +119,84 @@ nav::before {
   transform: rotate(180deg);
 }
 
+.search__input {
+  /* Fill in the rest of the space */
+  flex-basis: 0;
+  flex-grow: 999;
+  height: calc(100% - 2 * var(--space-sm));
+  margin: 0 var(--space-md);
+  padding: var(--space-sm-md) var(--space-md);
+
+  border: var(--standard-border);
+  background-color: var(--white);
+  transition: box-shadow var(--transition-duration);
+}
+.search__input:focus {
+  border: var(--focus-border);
+  box-shadow: var(--standard-centre-shadow);
+  outline: none;
+}
+
+.search__group {
+  position: absolute;
+  bottom: 100%;
+}
+.search__group__intro {
+  padding: calc(2 * var(--space-lg)) var(--space-md);
+}
+
+.search__group__intro, .search__group__results {
+  opacity: 0;
+  transition: opacity var(--transition-duration) linear;
+  background-color: var(--white);
+  width: 100%;
+
+  position: absolute;
+  bottom: 0;
+}
+.search__group__intro--active, .search__group__results--active {
+  opacity: 1;
+}
+
+.search__group__intro {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 13fr 7fr; 
+}
+.search__group__intro > * {
+  grid-column: 1/2;
+}
+/* Trick from StackOverflow to resize size https://stackoverflow.com/questions/6668577/using-before-css-pseudo-element-to-add-image-to-modal/6668643#6668643 */
+.search__group__intro::before {
+  content: '';
+  position: absolute;
+  display: block;
+  right: 0;
+  top: 5%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("/images/raster/vikingCharacter1--no-bg.png");
+  width: 40%;
+  /* Account for that top: 5% */
+  height: 95%; 
+}
+.search__group__intro h2 {
+  margin-bottom: var(--space-sm);
+}
+.search__group__intro ul {
+  list-style-type: disc;
+  list-style-position: inside;
+  padding-left: var(--space-md);
+}
+.search__group__intro ul li, .search__group__intro p {
+  font-size: var(--text-body-size--large);
+}
+/* Solution to reduce spacing from https://stackoverflow.com/questions/4373046/css-control-space-between-bullet-and-li */
+.search__group__intro ul li span {
+  position: relative;
+  left: calc(-1 * var(--space-sm));
+}
+
 /* Desktop */
 @media (min-width: 50em) {
   header {
@@ -123,10 +204,14 @@ nav::before {
     top: 0;
   }
 
-  nav {
+  nav, .search {
     border-top: unset;
     border-bottom: var(--standard-border);
     box-shadow: var(--standard-down-shadow);
+  }
+  nav::before, .search::before {
+    bottom: unset;
+    top: 100%;
   }
 
   ul.nav__link-list {
@@ -148,11 +233,37 @@ nav::before {
   .nav__open-button {
     display: none;
   }
+
+  .search__group {
+    bottom: unset;
+    top: 100%;
+  }
+  .search__group__intro, .search__group__results {
+    bottom: unset;
+    top: 0;
+    box-shadow: var(--standard-down-shadow);
+  }
+
+  /* this doesn't work... */
+  /* .search__group__intro {
+    --max-content-width: 70em;
+    grid-template-columns: minmax(13fr, calc(0.65 * var(--max-content-width))) minmax(7fr, calc(0.35 * var(--max-content-width))); 
+  } */
 }
 @media(min-width: 85em) {
-  nav {
+  nav, .search {
     --icon-size: 45px;
+    height: unset;
+  }
+  nav {
     padding: var(--space-xs);
+  }
+  .search {
+    --button-size: calc(70px + 3 * var(--space-xs));
+  }
+
+  .search__input {
+    padding: var(--space-sm) var(--space-md);
   }
 
   /* Minor modification from design;
@@ -164,7 +275,7 @@ nav::before {
 
 /* UTILITIES */
 /* Hidden classes for menus and transitions */
-.hidden, .nav--hidden::before {
+.hidden, .nav--hidden::before, .search--hidden::before {
   display: none;
 }
 

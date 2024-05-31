@@ -1,3 +1,4 @@
+const body = document.getElementsByTagName("body")[0];
 const nav = document.getElementsByTagName("nav")[0];
 const list = document.getElementsByClassName("nav__link-list")[0];
 const openButton = document.getElementById("openButton");
@@ -11,41 +12,51 @@ const searchBar = document.getElementsByClassName("search__input")[0];
 const desktopSmallWidth = 50 * 16;
 const desktopWidth = 85 * 20;
 
-// APPROACH: Only one of these can be open at a time.
-var navIsVisible = true;
+// APPROACH: The search is always above the nav if open.
 var searchIsVisible = false;
 
 var menuIsOpen = false;
+var menuIsInTransition = false;
 var searchResultsIsShown = false;
 
 // Help from https://stackoverflow.com/questions/11741070/how-to-get-the-element-clicked-on
-function addHidden(event) {
-  event.target.classList.add("hidden");
-  event.target.removeEventListener("transitionend", addHidden);
+function endTransition(event) {
+  menuIsInTransition = false;
 }
-function addHiddenSwitch(event) {
-  event.target.classList.add("hidden");
-  event.target.removeEventListener("transitionend", addHiddenSwitch);
-  nav.classList.remove("hidden");
+function addHidden(element) {
+  element.classList.add("hidden");
+  menuIsInTransition = false;
 }
-function addNavHidden(event) {
-  event.target.classList.add("nav--hidden");
-  event.target.removeEventListener("transitionend", addNavHidden);
+function addNavHidden(element) {
+  element.classList.add("nav--hidden");
+  menuIsInTransition = false;
 }
 
 function toggleMenu() {
-  // Approach to animate hidden elements from https://cloudfour.com/thinks/transitioning-hidden-elements/
+  if (menuIsInTransition) {
+    return;
+  }
+
+  // Approach to animate hidden elements from https://cloudfour.com/thinks/transitioning-hidden-elements/ and https://plainenglish.io/blog/passing-arguments-to-event-listeners-in-javascript-1a81bc397ecb for the anonymous/arrow functions.
   if (!menuIsOpen) {
     // Directly remove the hidden class to enable transitions
     list.classList.remove("hidden");
     nav.classList.remove("nav--hidden");
     // Update to make browser realize it isn't hidden again
     list.offsetHeight;
+    // Don't change state when in transition to avoid bugs
+    list.addEventListener("transitionend", endTransition, {once: true});
+    nav.addEventListener("transitionend", endTransition, {once: true});
+    // Remove scrolling from body when menu is open
+    body.classList.add("body--overlay-open");
   } else {
     // Wait for the transition to finish, then add back the hidden class.
-    list.addEventListener("transitionend", addHidden);
-    nav.addEventListener("transitionend", addNavHidden);
+    list.addEventListener("transitionend", () => {addHidden(list)}, {once: true});
+    nav.addEventListener("transitionend", () => {addNavHidden(nav)}, {once: true});
+    // Add back scrolling to body
+    body.classList.remove("body--overlay-open");
   }
+  menuIsInTransition = true;
   menuIsOpen = !menuIsOpen;
 
   nav.classList.toggle("nav--active");
@@ -53,31 +64,17 @@ function toggleMenu() {
   openButton.classList.toggle("nav__open-button--active");
 }
 
-function navToSearch() {
-  // If search is already opened, then don't do anything
-  if (searchIsVisible) {
-    return;
+// Must close the mobile menu when desktop reached
+window.onresize = handleResize;
+function handleResize() {
+  if (window.innerWidth >= desktopSmallWidth && menuIsOpen) {
+    toggleMenu();
   }
-
-  nav.classList.add("hidden");
-
-  searchSection.classList.remove("hidden");
-  searchSection.offsetHeight;
-  searchSection.classList.add("search--active");
-  // Show back what was hidden before to get the transition
-  if (searchResultsIsShown) {
-    showSearchResults();
-  } else {
-    showSearchIntro();
-  }
-
-  navIsVisible = false;
-  searchIsVisible = true;
 }
 
-function searchToNav() {
-  // If nav is already opened, then don't do anything
-  if (navIsVisible) {
+function openSearch() {
+  // If search is already opened, then nothing to do.
+  if (searchIsVisible) {
     return;
   }
 
@@ -86,20 +83,35 @@ function searchToNav() {
     toggleMenu();
   }
 
-  // Hide what is appropriate to get the transition
-  if (searchResultsIsShown) {
-    hideSearchResults();
-    // still want to bring up the search results after hiding away
-    searchResultsIsShown = true;
-  } else {
-    hideSearchIntro();
+  searchSection.classList.remove("hidden");
+  searchSection.offsetHeight;
+  searchSection.classList.add("search--active");
+
+  searchIsVisible = true;
+
+  // Remove scrolling from body when search is open
+  body.classList.add("body--overlay-open");
+}
+
+function closeSearch() {
+  // If search is already closed, then nothing to do.
+  if (!searchIsVisible) {
+    return;
   }
 
   searchSection.classList.remove("search--active");
-  searchSection.addEventListener("transitionend", addHiddenSwitch);
+  // Only want to fire when the element has finished transitioning and not its children (bubbling https://stackoverflow.com/questions/26309838/transitionend-listener-firing-on-child-elements), so stop the bubbling.
+  for (element of searchSection.children) {
+    element.addEventListener("transitionend", (event) => {
+      event.stopPropagation();
+    })
+  }
+  searchSection.addEventListener("transitionend", () => {addHidden(searchSection)}, {once: true});
 
-  navIsVisible = true;
   searchIsVisible = false;
+
+  // Add back scrolling to body
+  body.classList.remove("body--overlay-open");
 }
 
 
@@ -129,14 +141,12 @@ function handleClickOutside(event) {
     if (windowWidth < desktopSmallWidth) {
       searchEdge = window.innerHeight - searchSection.offsetHeight - Math.max(searchIntro.offsetHeight, searchResults.offsetHeight);
       if (y < searchEdge) {
-        searchToNav();
+        closeSearch();
       }
     } else {
       searchEdge = searchSection.offsetHeight + Math.max(searchIntro.offsetHeight, searchResults.offsetHeight);
-      console.log(y);
-      console.log(searchEdge);
       if (y > searchEdge) {
-        searchToNav();
+        closeSearch();
       }
     }
   }
@@ -155,40 +165,81 @@ function handleInput(event) {
 
   // Just searched so show results
   if (!searchResultsIsShown && query !== "") {
-    hideSearchIntro();
-    showSearchResults();
+    searchIntro.classList.add("hidden");
+    searchResults.classList.remove("hidden");
+    searchResultsIsShown = true;
     return;
   }
 
   // Search bar is empty and results is shown so go back to intro
   if (searchResultsIsShown && query === "") {
-    hideSearchResults();
-    showSearchIntro();
+    searchResults.classList.add("hidden");
+    searchResultsIsShown = false;
+    searchIntro.classList.remove("hidden");
     return;
   }
 }
 
-function hideSearchIntro() {
-  searchIntro.addEventListener("transitionend", addHidden);
-  searchIntro.classList.remove("search__group__intro--active");
-}
-function hideSearchResults() {
-  searchResults.addEventListener("transitionend", addHidden);
-  searchResults.classList.remove("search__group__results--active");
+// The following code is for expanding the e.g. categories and blog post segments in the search results page.
+const searchGroupResults = document.getElementsByClassName("search__group__results")[0];
 
-  searchResultsIsShown = false;
+const categoriesSegment = document.getElementsByClassName("categories-blog__categories-wrapper")[0];
+const categoriesToggle = document.getElementsByClassName("categories-blog__categories-wrapper__toggle")[0];
+const categoriesToggleCallback = () => {
+  checkTogglePosition(categoriesSegment)
 }
+categoriesToggle.addEventListener("click", () => {
+  toggleSegment(categoriesSegment, categoriesToggle, searchGroupResults, categoriesToggleCallback);
+});
 
-function showSearchIntro() {
-  searchIntro.classList.remove("hidden");
-  searchIntro.offsetHeight;
-  searchIntro.classList.add("search__group__intro--active");
+// const blogSegment = ;
+// const blogToggle = ;
+// const blogToggleCallback = () => {
+//   checkTogglePosition(blogSegment);
+// }
+// blogToggle.addEventListener("click", () => {
+//   toggleSegment(blogSegment, blogToggle, searchGroupResults, blogToggleCallback);
+// })
+
+function checkTogglePosition(segment) {
+  console.log("I'm called!");
+  let border;
+  if (window.innerWidth < desktopSmallWidth) {
+    border = nav.getBoundingClientRect().top;
+  } else {
+    // The bottom of the screen is now the border if it's on desktop.
+    border = window.innerHeight;
+  }
+  let segmentBottom = segment.getBoundingClientRect().bottom;
+  // Idea from https://stackoverflow.com/questions/45199518/detecting-if-an-element-is-outside-of-its-parents-outer-bounds
+  if (segmentBottom >= border) {
+    segment.classList.add("segment--active--fix-close");
+  } else if (segment.classList.contains("segment--active--fix-close")) {
+    // Need to get rid of that class so can go back again.
+    segment.classList.remove("segment--active--fix-close");
+  }
 }
-function showSearchResults() {
-  searchResults.classList.remove("hidden");
-  searchResults.offsetHeight;
-  searchResults.classList.add("search__group__results--active");
+function toggleSegment(segment, toggle, parentScroll, callback) {
+  let attemptToClose = segment.classList.contains("segment--active");
+  segment.classList.toggle("segment--active");
+  if (segment.classList.contains("segment--active--fix-close")) {
+    segment.classList.remove("segment--active--fix-close");
+    attemptToClose = true;
+  }
+  if (attemptToClose) {
+    console.log("hey why is this not working?");
+    parentScroll.removeEventListener("scroll", callback);
+    return;
+  }
 
-  searchResultsIsShown = true;
+  // While the animation plays for 300ms, rapidly check toggle position to see if you have to stick it to the bottom of the screen as it expands.
+  let intervalID = setInterval(() => {
+    checkTogglePosition(segment, toggle);
+  }, 10);
+  setTimeout(() => {
+    clearInterval(intervalID);
+    intervalID = null;
+  }, 300);
+  // Add a listener to add/remove the class as necessary
+  parentScroll.addEventListener("scroll", callback);
 }
-

@@ -35,16 +35,18 @@
       </ul>
       <div class="cluster">
         <a href="#" class="centre nav__icon-group__icon"><img src="/images/svg/accountCircle.svg" alt="Account page"></a>
-        <button class="centre nav__icon-group__icon" onclick="navToSearch()"><img src="/images/svg/search.svg" alt="Search menu"></button>
-        <a href="centre shopping-cart.html" class="centre nav__icon-group__icon"><img src="/images/svg/shoppingCart.svg" alt="Shopping cart"></a>
+        <button class="centre nav__icon-group__icon" onclick="openSearch()"><img src="/images/svg/search.svg" alt="Search menu"></button>
+        <a href="shopping-cart.html" class="centre nav__icon-group__icon"><img src="/images/svg/shoppingCart.svg" alt="Shopping cart"></a>
         <button class="centre nav__icon-group__icon nav__icon-group__icon--filled nav__open-button" id="openButton" onclick="toggleMenu()"><img src="images/svg/arrowUp.svg" alt="Open mobile navigation menu"></button>
       </div>
     </nav>
-    <section class="cluster search hidden" role="search">
+    <section class="centre search hidden" role="search">
       <!-- In desktop, removed logo home button and kept mobile aesthetic to close search because it made more sense to code and doesn't significantly hamper UI/UX. Increases consistency too. -->
-      <input class="search__input" type="search" name="search" placeholder="e.g. switches, AULA F68, ...">
-      <button class="search__close" onclick="searchToNav()"><img src="images/svg/close.svg" alt="Close search menu"></button>
-      <div class="search__group">
+      <div class="cluster max-width">
+        <input class="search__input" type="search" name="search" placeholder="e.g. switches, AULA F68, ...">
+        <button class="search__close" onclick="closeSearch()"><img src="images/svg/close.svg" alt="Close search menu"></button>
+      </div>
+      <div class="search__group centre--horizontal">
         <div class="search__group__intro max-width">
           <h2>What are you looking for?</h2>
           <p>Examples of what you could look up:</p>
@@ -54,21 +56,108 @@
             <li><span>Blog articles</span></li>
           </ul>
         </div>
-        <div class="search__group__results hidden">
+        <div class="search__group__results hidden max-width">
           <div class="categories-blog">
             <h2>Categories</h2>
-            <div class="category-card">
-              <!-- alt left empty for category images since they are decorative. -->
-              <img src="/images/raster/switchesCategory.png" alt="">
-              <h3>Switches</h3>
-              <p>Our collection of switches for mechanical keyboards.</p>
+            <div class="categories-blog__categories-wrapper">
+              <div class="category-card">
+                <!-- alt left empty for category images since they are decorative. -->
+                <picture>
+                  <img src="/images/raster/switchesCategory.png" alt="">
+                </picture>
+                <div class="category-card__text-wrapper">
+                  <h3>Switches</h3>
+                  <p>Our collection of switches for mechanical keyboards.</p>
+                </div>
+              </div>
+              <div class="category-card">
+                <!-- alt left empty for category images since they are decorative. -->
+                <picture>
+                  <img src="/images/raster/switchesCategory.png" alt="">
+                </picture>
+                <div class="category-card__text-wrapper">
+                  <h3>Switches</h3>
+                  <p>Our collection of switches for mechanical keyboards.</p>
+                </div>
+              </div>
+              <div class="category-card">
+                <!-- alt left empty for category images since they are decorative. -->
+                <picture>
+                  <img src="/images/raster/switchesCategory.png" alt="">
+                </picture>
+                <div class="category-card__text-wrapper">
+                  <h3>Switches</h3>
+                  <p>Our collection of switches for mechanical keyboards.</p>
+                </div>
+              </div>
+              <div class="category-card">
+                <!-- alt left empty for category images since they are decorative. -->
+                <picture>
+                  <img src="/images/raster/switchesCategory.png" alt="">
+                </picture>
+                <div class="category-card__text-wrapper">
+                  <h3>Switches</h3>
+                  <p>Our collection of switches for mechanical keyboards.</p>
+                </div>
+              </div>
+              <div class="category-card">
+                <!-- alt left empty for category images since they are decorative. -->
+                <picture>
+                  <img src="/images/raster/switchesCategory.png" alt="">
+                </picture>
+                <div class="category-card__text-wrapper">
+                  <h3>Switches</h3>
+                  <p>Our collection of switches for mechanical keyboards.</p>
+                </div>
+              </div>
+              <div class="category-card">
+                <!-- alt left empty for category images since they are decorative. -->
+                <picture>
+                  <img src="/images/raster/switchesCategory.png" alt="">
+                </picture>
+                <div class="category-card__text-wrapper">
+                  <h3>Switches</h3>
+                  <p>Our collection of switches for mechanical keyboards.</p>
+                </div>
+              </div>
+              <div class="category-card">
+                <!-- alt left empty for category images since they are decorative. -->
+                <picture>
+                  <img src="/images/raster/switchesCategory.png" alt="">
+                </picture>
+                <div class="category-card__text-wrapper">
+                  <h3>Switches</h3>
+                  <p>Our collection of switches for mechanical keyboards.</p>
+                </div>
+              </div>
+              <div class="category-card">
+                <!-- alt left empty for category images since they are decorative. -->
+                <picture>
+                  <img src="/images/raster/switchesCategory.png" alt="">
+                </picture>
+                <div class="category-card__text-wrapper">
+                  <h3>Switches</h3>
+                  <p>Our collection of switches for mechanical keyboards.</p>
+                </div>
+              </div>
+              <div class="category-card">
+                <!-- alt left empty for category images since they are decorative. -->
+                <picture>
+                  <img src="/images/raster/switchesCategory.png" alt="">
+                </picture>
+                <div class="category-card__text-wrapper">
+                  <h3>Switches</h3>
+                  <p>Our collection of switches for mechanical keyboards.</p>
+                </div>
+              </div>
+              <button class="categories-blog__categories-wrapper__toggle max-width" ><img src="images/svg/arrowDown--dark.svg" alt="Expand search results for categories"></button>
             </div>
-            <!-- <h2>Blog</h2>
+            <h2>Blog</h2>
             <div class="blog-card">
               <img src="/images/raster/blogImage.png" alt="">
               <h3>Comparing types of mechanical keyboard switches</h3>
               <p>by Martin Zhang | 25/10/2023</p>
-            </div> -->
+            </div>
           </div>
           <div class="products">
 

@@ -53,9 +53,11 @@ p, input, li {
   font-weight: var(--body-regular-weight);
   font-size: var(--text-body-size);
 }
-h1, h2 {
+h1, h2, h3 {
   font-family: var(--heading-font-family);
   font-weight: var(--heading-weight);
+}
+h1, h2 {
   font-size: var(--text-heading-size);
 }
 h1 {
@@ -63,6 +65,10 @@ h1 {
 }
 h2 {
   color: var(--colour-primary--dark);
+}
+h3 {
+  font-size: var(--text-subheading-size);
+  color: var(--colour-secondary--dark);
 }
 
 @media (min-width: 85em) {

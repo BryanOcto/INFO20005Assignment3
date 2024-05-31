@@ -16,7 +16,10 @@
   --colour-tertiary--light: #FFDFF3;
 
   --white: #F6F9F2;
-  --white--translucent: #F6F9F280;
+  --white--translucent--90: #F6F9F2E6; /* 90% */
+  --white--translucent--81: #F6F9F2CF; /* 81% */
+  --white--translucent--45: #F6F9F273; /* 45% */
+  --white--transparent: #F6F9F200; /* 0% */
   --grey: #7A8073;
   --black: #0D1600;
   --black--translucent: #0D160080;

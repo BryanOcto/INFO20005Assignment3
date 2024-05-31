@@ -18,6 +18,8 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: center;
+  width: 100%;
 }
 
 .stack > * {
@@ -27,13 +29,13 @@
 
 /* .stack--space-sm > * + * {
   margin-top: var(--space-sm);
-}
+} */
 
 .stack--space-md > * + * {
   margin-top: var(--space-md);
 }
 
-.stack--space-lg > * + * {
+/* .stack--space-lg > * + * {
   margin-top: var(--space-lg);
 } */
 
@@ -43,5 +45,13 @@
   align-items: center;
   justify-content: center;
 }
+.centre--horizontal {
+  display: flex;
+  justify-content: center;
+}
 
 /* max-width on content wrapper to prevent increase in width. */
+.max-width {
+  width: 100%;
+  max-width: 50rem;
+}

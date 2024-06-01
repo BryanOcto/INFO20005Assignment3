@@ -20,7 +20,7 @@ function setTranslateX(element, translateXValue) {
   element.style.transform = "translateX(" + translateXValue + "px)";
 }
 
-function endTransition(event, element) {
+function endCarouselTransition(event, element) {
   element.setAttribute("data-is-in-transition", "false")
 }
 
@@ -58,6 +58,10 @@ function handleOverflowAfterDelay(carousel, buttonLeft, buttonRight) {
   const currentPosition = parseInt(carousel.dataset.currentPosition);
   if (currentPosition > maximumPosition) {
     moveByDelta(carousel, buttonLeft, buttonRight, maximumPosition - currentPosition);
+  }
+  // The following is true when we're on the right side, so need to add the disabled class
+  if (currentPosition == maximumPosition) {
+    buttonRight.setAttribute("disabled", "");
   }
 }
 // This is when we add elements and may need to update the right arrow disabled state since there may be more elements to the right now.
@@ -112,7 +116,7 @@ function moveByDelta(carousel, buttonLeft, buttonRight, delta) {
   // Prevent button clicking when in transition to avoid bugs
   carousel.setAttribute("data-is-in-transition", "true");
   carousel.addEventListener("transitionend", (event) => {
-    endTransition(event, carousel);
+    endCarouselTransition(event, carousel);
   }, {once: true});
 }
 

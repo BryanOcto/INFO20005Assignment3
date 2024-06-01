@@ -49,7 +49,7 @@ function handleOverflow(carousel, buttonLeft, buttonRight) {
   }, 10);
 }
 function handleOverflowAfterDelay(carousel, buttonLeft, buttonRight) {
-  const cardContainer = carousel.children[2];
+  const cardContainer = carousel.children[2].children[0];
   const numHidden = countHidden(cardContainer);
   if (numHidden == 0) {
     return;
@@ -66,7 +66,7 @@ function handleOverflowAfterDelay(carousel, buttonLeft, buttonRight) {
 }
 // This is when we add elements and may need to update the right arrow disabled state since there may be more elements to the right now.
 function handleShortflow(carousel, buttonLeft, buttonRight) {
-  const cardContainer = carousel.children[2];
+  const cardContainer = carousel.children[2].children[0];
   const numFiltered = countFiltered(cardContainer);
   // Nothing to do if none was filtered
   if (numFiltered == 0) {
@@ -101,7 +101,7 @@ function countFiltered(cardContainer) {
 }
 
 function moveByDelta(carousel, buttonLeft, buttonRight, delta) {
-  const cardContainer = carousel.children[2];
+  const cardContainer = carousel.children[2].children[0];
   const currentPosition = parseInt(carousel.dataset.currentPosition);
   const minimumPosition = 1;
   // If hidden they must be reduced from the maximum count
@@ -162,7 +162,7 @@ function resetAllCarousels(translateXOffset) {
     carousel.setAttribute("data-current-position", "1");
     const buttonLeft = carousel.children[0];
     const buttonRight = carousel.children[1];
-    const cardContainer = carousel.children[2];
+    const cardContainer = carousel.children[2].children[0];
     setTranslateX(cardContainer, translateXOffset);
     resetToggles(buttonLeft, buttonRight);
   }

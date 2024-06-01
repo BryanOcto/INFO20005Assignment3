@@ -1,6 +1,6 @@
 const filtersContainer = document.getElementsByClassName("products__filters")[0];
 const productsCarousel = document.querySelector(".products .carousel");
-const productsCarouselContainer = document.querySelector(".products .carousel .carousel__card-container");
+const productsCarouselContainer = document.querySelector(".products .carousel .carousel__card-mask .carousel__card-mask__card-container");
 
 filtersContainer.addEventListener("input", handleFilterInput);
 function handleFilterInput() {

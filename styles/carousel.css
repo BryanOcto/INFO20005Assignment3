@@ -6,7 +6,6 @@
   --icon-size: 1.5rem;
   --gradient-size: 3.75rem;
   width: 100%;
-  overflow-x: hidden;
   --transition-duration--short: .1s;
   --transition-timing-function: ease-out;
 
@@ -19,7 +18,7 @@
 .carousel__toggle {
   top: 50%;
   transform: translateY(-50%);
-  z-index: 2;
+  z-index: 1;
 
   width: var(--button-size);
   height: var(--button-size);
@@ -35,36 +34,20 @@
 .carousel__toggle[disabled] {
   background-color: var(--colour-secondary--dark);
 }
-/* Gradients covering up area behind the left/right buttons */
-.carousel::before, .carousel::after {
-  content: "";
-  display: block;
-  top: 0;
-  z-index: 1;
-  width: var(--gradient-size);
-  height: 100%;
-}
-.carousel--light {
-  --gradient-stops: var(--white--transparent) 0%, var(--white--translucent--45) 10%, var(--white) 100%;
-}
-.carousel--dark {
-  --gradient-stops: var(--colour-secondary--dark--transparent) 0%, var(--colour-secondary--dark--translucent--45) 10%, var(--colour-secondary--dark) 100%;
-}
-.carousel::before {
-  left: 0;
-  background: linear-gradient(-90deg, var(--gradient-stops));
-}
-.carousel::after {
-  right: 0;
-  background: linear-gradient(90deg, var(--gradient-stops));
-}
 .carousel__toggle:nth-of-type(1) {
   left: 0;
 }
 .carousel__toggle:nth-of-type(2) {
   right: 0;
 }
-.carousel__card-container {
+.carousel__card-mask {
+  width: 100%;
+  overflow-x: hidden;
+  /* Thanks https://stackoverflow.com/questions/9525215/using-css-can-you-apply-a-gradient-mask-to-fade-to-the-background-over-text */
+  /* Make sure browser is updated enough for this to work! */
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) var(--gradient-size), rgba(0, 0, 0, 1) calc(100% - var(--gradient-size)), rgba(0, 0, 0, 0) 100%);
+}
+.carousel__card-mask__card-container {
   position: relative;
   min-width: calc(100% - 2 * var(--gradient-size));
 
@@ -97,9 +80,11 @@
 .product-card--light {
   border: var(--card-border--light-bg);
 }
+.product-card--dark {
+  border: var(--card-border--dark-bg);
+}
 .product-card--out-of-stock .product-card__picture {
   position: relative;
-  background-color: var(--white);
 }
 .product-card--out-of-stock .product-card__picture::before {
   content: "Out of stock!";
@@ -122,6 +107,9 @@
   width: 100%;
   height: 100%;
 }
+.product-card__picture--contain {
+  background-color: var(--white);
+}
 .product-card__picture--contain img {
   object-fit: contain;
 }
@@ -132,23 +120,33 @@
 
 .product-card__text-wrapper {
   display: flex;
-  padding: var(--space-md) var(--space-sm-md);
+  padding: var(--space-sm-md);
   gap: var(--space-xs);
   height: min-content;
 }
 .product-card__text-wrapper__info h3 {
-  margin-bottom: var(--space-xs);
+  margin-bottom: var(--space-sm);
+}
+.product-card--dark .product-card__text-wrapper__info h3 {
+  color: var(--colour-secondary--light);
 }
 .product-card__text-wrapper__prices {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: var(--space-xs);
+  padding-top: var(--space-xs);
+  
+  /* Thanks https://stackoverflow.com/questions/49658425/flexbox-justify-self-flex-end-not-working */
+  margin-left: auto;
 }
 .product-card__text-wrapper__prices p {
   font-style: italic;
   text-align: right;
   width: min-content;
+}
+.product-card--dark .product-card__text-wrapper__info ul {
+  color: var(--white);
 }
 .product-card__text-wrapper__prices p:not(:last-child) {
   padding: var(--space-sm-xs) var(--space-xs);
@@ -169,6 +167,9 @@
   color: var(--black);
   background-color: unset;
   text-decoration: none;
+}
+.product-card--dark .product-card__text-wrapper__prices__original-price--non-discounted {
+  color: var(--white);
 }
 
 @media(min-width: 85em) {

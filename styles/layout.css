@@ -55,6 +55,9 @@
   width: 100%;
   max-width: 50rem;
 }
+.max-width--children > * {
+  max-width: 50rem;
+}
 
 /* Information for screenreaders only 
   copy-pased from https://css-tricks.com/inclusively-hidden/ */

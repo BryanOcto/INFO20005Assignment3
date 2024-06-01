@@ -42,11 +42,14 @@
   --text-body-size: 1rem;
   --text-body-size--large: calc(1rem * var(--text-scale-ratio));
   --text-body-size--small: calc(1rem / var(--text-scale-ratio));
+
+  --text-body-line-height: var(--text-scale-ratio);
+  --text-body-line-height--large: calc(var(--text-scale-ratio) * var(--text-scale-ratio));
 }
 
 /* Default styles for fonts */
-p, input, li, legend, label, button, .product-card--out-of-stock .product-card__picture::before {
-  line-height: var(--text-scale-ratio);
+p, a, input, li, legend, label, button, .product-card--out-of-stock .product-card__picture::before {
+  line-height: var(--text-body-line-height);
   font-family: var(--body-font-family);
   font-weight: var(--body-regular-weight);
   font-size: var(--text-body-size);
@@ -57,11 +60,6 @@ h1, h2, h3 {
 }
 h1, h2 {
   font-size: var(--text-heading-size);
-}
-h1 {
-  color: var(--colour-primary--light);
-}
-h2 {
   color: var(--colour-primary--dark);
 }
 h3 {

@@ -36,7 +36,7 @@ nav {
   background-color: var(--white--transparent);
   transition: background-color var(--transition-duration) linear;
 }
-nav::before, .search > *:not(.search__group), .search::before {
+header nav::before, .search > *:not(.search__group), .search::before {
   opacity: 0;
   transition: opacity var(--transition-duration) linear;
 }
@@ -44,7 +44,7 @@ nav::before, .search > *:not(.search__group), .search::before {
   background-color: var(--white);
 }
 /* The coloured overlay when menu is opened */
-nav::before, .search::before {
+header nav::before, .search::before {
   content: "";
   display: block;
   position: absolute;
@@ -176,18 +176,13 @@ nav::before, .search::before {
 .search__group__intro h2 {
   margin-bottom: var(--space-sm);
 }
-.search__group__intro ul {
+.search__group__intro ul, section#key-features > div ul, section#specification > div ul {
   list-style-type: disc;
-  list-style-position: inside;
-  padding-left: var(--space-md);
+  list-style-position: outside;
+  padding-left: var(--space-lg);
 }
 .search__group__intro ul li, .search__group__intro p {
   font-size: var(--text-body-size--large);
-}
-/* Solution to reduce spacing from https://stackoverflow.com/questions/4373046/css-control-space-between-bullet-and-li */
-.search__group__intro ul li span {
-  position: relative;
-  left: calc(-1 * var(--space-sm));
 }
 
 .search__group__results {
@@ -435,7 +430,7 @@ nav::before, .search::before {
     border-bottom: var(--standard-border);
     box-shadow: var(--standard-down-shadow);
   }
-  nav::before, .search::before {
+  header nav::before, .search::before {
     bottom: unset;
     top: 100%;
   }

@@ -93,8 +93,8 @@ main section h2 {
 .about-us p + p {
   margin-top: var(--space-md);
 }
-.about-us p:last-child {
-  margin-bottom: var(--space-xl);
+.about-us p:last-child, section#overview > div > p:last-child, section#key-features > div > :last-child, section#specification > div > :last-child {
+  padding-bottom: var(--space-xl);
 }
 .about-us__p-with-side {
   position: relative;
@@ -209,7 +209,7 @@ main section h2 {
     margin-bottom: 0;
   }
 
-  .hero > div, .featured > div {
+  .section--dark-bg > div {
     position: relative;
   }
   .section--dark-bg > div::before {
@@ -218,6 +218,10 @@ main section h2 {
   .section--dark-bg--right-decoration > div::before {
     left: 50%;
     transform: translateX(-50%);
+  }
+  .section--dark-bg--right-decoration--right > div::before {
+    left: unset;
+    right: calc(-1 * var(--space-xl));
   }
 
   .news-and-events__form {

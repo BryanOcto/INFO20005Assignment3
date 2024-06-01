@@ -62,7 +62,7 @@ h1, h2 {
   font-size: var(--text-heading-size);
   color: var(--colour-primary--dark);
 }
-h3 {
+h3, .product-info__info > h1 {
   font-size: var(--text-subheading-size);
   color: var(--colour-secondary--dark);
 }

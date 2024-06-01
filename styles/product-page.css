@@ -1,0 +1,271 @@
+:root {
+  --small-icon-size: 2rem;
+  --small-button-size: 3rem;
+}
+.main--product-page {
+  /* accomodate the add-to-cart fixed */
+  --add-to-card-height: calc(var(--small-button-size) + 2 * var(--space-md));
+  margin-bottom: calc(var(--button-size) + var(--add-to-card-height));
+}
+.body--product-page {
+  background-color: var(--white);
+}
+
+/* PAGE NAVIGATION */
+.page-navigation, .breadcrumb {
+  border-top: none;
+}
+.page-navigation {
+  box-shadow: var(--standard-down-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 3;
+}
+.page-navigation__ul, .breadcrumb__ul {
+  display: flex;
+}
+.page-navigation__ul li, .page-navigation__ul li a {
+  width: 100%;
+}
+.page-navigation__ul li a {
+  display: block;
+  text-align: center;
+  padding: var(--space-md);
+}
+
+.breadcrumb {
+  box-shadow: none;
+  padding-top: var(--space-xs);
+  padding-bottom: var(--space-xs);
+  margin-top: var(--space-lg);
+}
+.breadcrumb__ul li:not(:last-child)::after {
+  content: "/";
+  margin: 0 var(--space-sm);
+}
+.breadcrumb__ul li a {
+  text-decoration: underline;
+}
+
+.main--product-page {
+  background-color: var(--white);
+}
+
+/* Showcase section */
+section#showcase {
+  padding: 0;
+}
+section#showcase > div > *:not(.carousel) {
+  padding-left: var(--space-xl);
+  padding-right: var(--space-xl);
+}
+section#showcase .carousel__picture, section#showcase .carousel__iframe {
+  width: 17rem;
+  height: 13rem;
+  border: var(--card-border--light-bg);
+}
+section#showcase .carousel__picture img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+section#showcase .carousel__picture--contain {
+  background-color: var(--white);
+}
+section#showcase .carousel__picture--contain img {
+  object-fit: contain;
+}
+.product-info {
+  padding-top: var(--space-md);
+  padding-bottom: var(--space-md);
+}
+.product-info__info h1 {
+  padding: 0;
+}
+.product-info__info ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+.product-info__info ul li {
+  font-style: italic;
+}
+.product-info__info ul li:not(:last-child)::after {
+  content: ",";
+  margin-right: .5ch;
+}
+.product-description {
+  padding-bottom: var(--space-xl);
+}
+
+/* Overview section */
+section#overview > div > h2 {
+  padding-bottom: var(--space-sm-xs);
+}
+section#overview > div > p {
+  width: auto;
+  text-align: left;
+}
+section#overview > div > p, section#key-features > div ul li, section#specification > div ul li {
+  line-height: var(--text-body-line-height--large);
+}
+
+/* Features */
+section#key-features > div picture, section#key-features > div picture img {
+  width: 100%;
+}
+section#key-features > div > h2 {
+  text-align: center;
+  padding-bottom: var(--space-sm);
+}
+section#key-features > div ul, section#specification > div > ul {
+  margin: var(--space-md) 0;
+}
+section#key-features > div ul:first-of-type {
+  margin-bottom: 0;
+}
+section#key-features > div ul:last-of-type {
+  margin-top: 0;
+}
+section#key-features > div > picture {
+  margin-top: var(--space-md);
+}
+section#key-features > div picture.no-margin-top {
+  margin-top: 0;
+}
+
+/* Specification */
+section#specification > div ul {
+  color: var(--white);
+}
+
+/* Add to cart */
+.add-to-cart {
+  position: fixed;
+  bottom: var(--button-size);
+  padding: var(--space-md);
+
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: var(--space-md);
+
+  box-shadow: var(--standard-up-shadow);
+}
+.add-to-cart button {
+  flex-grow: 1;
+  font-size: var(--text-body-size--large);
+  font-weight: var(--body-bold-weight);
+  padding: 0;
+}
+.counter {
+  display: flex;
+}
+.counter > * {
+  width: var(--small-button-size);
+  height: var(--small-button-size);
+}
+.counter__decrease > img, .counter__increase > img {
+  width: var(--small-icon-size);
+  height: var(--small-icon-size);
+}
+.counter__value {
+  background-color: var(--colour-secondary--dark);
+  color: white;
+  font-weight: var(--body-bold-weight);
+}
+.counter__value > span {
+  height: 100%;
+}
+
+/* Desktop */
+@media (min-width: 50em) {
+  .main--product-page {
+    margin-bottom: var(--add-to-card-height);
+  }
+
+  header > nav {
+    box-shadow: none;
+  }
+  .page-navigation, .breadcrumb {
+    border-bottom: none;
+  }
+  .page-navigation {
+    padding: 0;
+    top: calc(var(--button-size) + 0.8 * var(--border-width));
+  }
+  .add-to-cart {
+    bottom: 0;
+    justify-content: flex-end;
+  }
+  .add-to-cart button {
+    max-width: 15rem;
+  }
+
+  /* Showcase */
+  section#showcase {
+    padding: 0 var(--space-xl);
+  }
+  section#showcase > div > *:not(.carousel) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Features, Specification */
+  .content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  section#specification .content-wrapper {
+    flex-direction: column;
+    margin-top: var(--space-md);
+    justify-content: flex-start;
+    gap: var(--space-md);
+  }
+  section#specification.specification--ttc .content-wrapper {
+    height: 20rem;
+  }
+  section#specification.specification--leobog .content-wrapper {
+    height: 21rem;
+  }
+  .content-wrapper picture {
+    order: -1;
+  }
+  .content-wrapper picture:first-of-type {
+    margin-left: auto;
+    margin-right: var(--space-md);
+  }
+  .content-wrapper picture:last-of-type {
+    margin-right: auto;
+  }
+  section#specification .content-wrapper > ul ul {
+    width: unset;
+    max-width: unset;
+  }
+  section#key-features.key-features--ttc .content-wrapper picture:first-of-type {
+    width: 55%;
+  }
+  section#key-features.key-features--ttc .content-wrapper picture:last-of-type {
+    width: 40%;
+  }
+  section#key-features.key-features--leobog .content-wrapper picture {
+    width: 40%;
+  }
+  section#key-features.key-features--leobog .content-wrapper > ul:first-of-type {
+    max-width: 36.5%;
+  }
+  section#key-features.key-features--leobog .content-wrapper > ul:last-of-type {
+    max-width: 58.5%;
+  }
+  section#key-features div ul, section#specification div ul {
+    max-width: 45%;
+  }
+  section#key-features > div ul:first-of-type, section#key-features > div ul:last-of-type {
+    margin: var(--space-md) 0;
+  }
+}
+@media (min-width: 85em) {
+  .page-navigation {
+    top: calc(var(--button-size) + 2 * var(--space-xs) + 0.8 * var(--border-width));
+  }
+}

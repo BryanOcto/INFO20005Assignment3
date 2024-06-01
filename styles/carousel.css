@@ -1,0 +1,180 @@
+/* CAROUSEL */
+/* Initial ideas from https://youtu.be/7HPsdVQhpRw?si=t__6ji4NqTYfD_BO and other sources, though I ran out of time to implement the dragging mechanism. */
+.carousel {
+  position: relative;
+  --button-size: 2.5rem;
+  --icon-size: 1.5rem;
+  --gradient-size: 3.75rem;
+  width: 100%;
+  overflow-x: hidden;
+  --transition-duration--short: .1s;
+  --transition-timing-function: ease-out;
+
+  display: grid;
+  align-items: center;
+}
+.carousel__toggle, .carousel::before, .carousel::after {
+  position: absolute;
+}
+.carousel__toggle {
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+
+  width: var(--button-size);
+  height: var(--button-size);
+  margin: 0 calc((var(--gradient-size) - var(--button-size)) / 2);
+  box-shadow: var(--standard-centre-shadow);
+
+  transition: background-color var(--transition-duration) var(--transition-timing-function);
+}
+.carousel__toggle img {
+  width: var(--icon-size);
+  height: var(--icon-size);
+}
+.carousel__toggle[disabled] {
+  background-color: var(--colour-secondary--dark);
+}
+/* Gradients covering up area behind the left/right buttons */
+.carousel::before, .carousel::after {
+  content: "";
+  display: block;
+  top: 0;
+  z-index: 1;
+  width: var(--gradient-size);
+  height: 100%;
+}
+.carousel--light {
+  --gradient-stops: var(--white--transparent) 0%, var(--white--translucent--45) 10%, var(--white) 100%;
+}
+.carousel--dark {
+  --gradient-stops: var(--colour-secondary--dark--transparent) 0%, var(--colour-secondary--dark--translucent--45) 10%, var(--colour-secondary--dark) 100%;
+}
+.carousel::before {
+  left: 0;
+  background: linear-gradient(-90deg, var(--gradient-stops));
+}
+.carousel::after {
+  right: 0;
+  background: linear-gradient(90deg, var(--gradient-stops));
+}
+.carousel__toggle:nth-of-type(1) {
+  left: 0;
+}
+.carousel__toggle:nth-of-type(2) {
+  right: 0;
+}
+.carousel__card-container {
+  position: relative;
+  min-width: calc(100% - 2 * var(--gradient-size));
+
+  display: flex;
+  width: fit-content;
+  height: min-content;
+  gap: var(--space-sm);
+  /* Allows for the hover animation to not get clipped */
+  padding: var(--space-sm) 0;
+
+  transform: translateX(var(--gradient-size));
+  transition: transform var(--transition-duration) var(--transition-timing-function);
+}
+
+.product-card {
+  --product-card-width: 17rem;
+  --product-image-height: 10rem;
+  width: var(--product-card-width);
+  height: min-content;
+  display: block;
+
+  transition:
+    transform var(--transition-duration--short) var(--transition-timing-function),
+    box-shadow var(--transition-duration--short) var(--transition-timing-function);
+}
+.product-card:hover {
+  transform: translateY(calc(-1 * var(--space-xs)));
+  box-shadow: var(--standard-down-shadow);
+}
+.product-card--light {
+  border: var(--card-border--light-bg);
+}
+.product-card--out-of-stock .product-card__picture {
+  position: relative;
+  background-color: var(--white);
+}
+.product-card--out-of-stock .product-card__picture::before {
+  content: "Out of stock!";
+  text-transform: uppercase;
+  font-size: var(--text-body-size--large);
+  padding: var(--space-xs) var(--space-lg);
+  background-color: var(--colour-tertiary--medium-contrast);
+  color: var(--colour-tertiary--light);
+  box-shadow: var(--standard-centre-shadow);
+  width: max-content;
+
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 25%);
+}
+
+.product-card__picture img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.product-card__picture--contain img {
+  object-fit: contain;
+}
+.product-card__picture {
+  display: block;
+  height: var(--product-image-height);
+}
+
+.product-card__text-wrapper {
+  display: flex;
+  padding: var(--space-md) var(--space-sm-md);
+  gap: var(--space-xs);
+  height: min-content;
+}
+.product-card__text-wrapper__info h3 {
+  margin-bottom: var(--space-xs);
+}
+.product-card__text-wrapper__prices {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-xs);
+}
+.product-card__text-wrapper__prices p {
+  font-style: italic;
+  text-align: right;
+  width: min-content;
+}
+.product-card__text-wrapper__prices p:not(:last-child) {
+  padding: var(--space-sm-xs) var(--space-xs);
+}
+.product-card__text-wrapper__prices__discount {
+  background-color: var(--colour-tertiary--medium-contrast);
+  color: var(--colour-tertiary--light);
+}
+.product-card__text-wrapper__prices__discounted-price {
+  background-color: var(--colour-tertiary--light);
+  color: var(--colour-tertiary--dark);
+}
+.product-card__text-wrapper__prices__original-price {
+  color: var(--grey);
+  text-decoration: line-through;
+}
+.product-card__text-wrapper__prices__original-price--non-discounted {
+  color: var(--black);
+  background-color: unset;
+  text-decoration: none;
+}
+
+@media(min-width: 85em) {
+  .carousel {
+    --button-size: 3rem;
+    --icon-size: 1.5rem;
+    --gradient-size: 4.25rem;
+  }
+}

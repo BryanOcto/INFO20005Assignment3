@@ -7,10 +7,6 @@ const searchSection = document.getElementsByClassName("search")[0];
 const searchIntro = document.getElementsByClassName("search__group__intro")[0];
 const searchResults = document.getElementsByClassName("search__group__results")[0];
 const searchBar = document.getElementsByClassName("search__input")[0];
-// desktopSmallWidth = 50em = 50 * 1rem = 50 * 16px
-// desktopWidth = 85em = 85 * 1rem = 85 * 20px;
-const desktopSmallWidth = 50 * 16;
-const desktopWidth = 85 * 20;
 
 // APPROACH: The search is always above the nav if open.
 var searchIsVisible = false;
@@ -65,8 +61,7 @@ function toggleMenu() {
 }
 
 // Must close the mobile menu when desktop reached
-window.onresize = handleResize;
-function handleResize() {
+function handleMenuResize() {
   if (window.innerWidth >= desktopSmallWidth && menuIsOpen) {
     toggleMenu();
   }
@@ -192,17 +187,16 @@ categoriesToggle.addEventListener("click", () => {
   toggleSegment(categoriesSegment, categoriesToggle, searchGroupResults, categoriesToggleCallback);
 });
 
-// const blogSegment = ;
-// const blogToggle = ;
-// const blogToggleCallback = () => {
-//   checkTogglePosition(blogSegment);
-// }
-// blogToggle.addEventListener("click", () => {
-//   toggleSegment(blogSegment, blogToggle, searchGroupResults, blogToggleCallback);
-// })
+const blogSegment = document.getElementsByClassName("categories-blog__blog-wrapper")[0];
+const blogToggle = document.getElementsByClassName("categories-blog__blog-wrapper__toggle")[0];
+const blogToggleCallback = () => {
+  checkTogglePosition(blogSegment);
+}
+blogToggle.addEventListener("click", () => {
+  toggleSegment(blogSegment, blogToggle, searchGroupResults, blogToggleCallback);
+})
 
 function checkTogglePosition(segment) {
-  console.log("I'm called!");
   let border;
   if (window.innerWidth < desktopSmallWidth) {
     border = nav.getBoundingClientRect().top;
@@ -227,7 +221,6 @@ function toggleSegment(segment, toggle, parentScroll, callback) {
     attemptToClose = true;
   }
   if (attemptToClose) {
-    console.log("hey why is this not working?");
     parentScroll.removeEventListener("scroll", callback);
     return;
   }

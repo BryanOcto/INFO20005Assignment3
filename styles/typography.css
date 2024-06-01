@@ -45,10 +45,8 @@
 }
 
 /* Default styles for fonts */
-p, input, li {
+p, input, li, legend, label, button, .product-card--out-of-stock .product-card__picture::before {
   line-height: var(--text-scale-ratio);
-}
-p, input, li {
   font-family: var(--body-font-family);
   font-weight: var(--body-regular-weight);
   font-size: var(--text-body-size);
@@ -69,6 +67,10 @@ h2 {
 h3 {
   font-size: var(--text-subheading-size);
   color: var(--colour-secondary--dark);
+}
+
+.bold {
+  font-weight: var(--body-bold-weight);
 }
 
 @media (min-width: 85em) {

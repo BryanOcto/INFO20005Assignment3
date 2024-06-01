@@ -1,6 +1,7 @@
 :root {
   /* Spacing (included here since related to the above) */
   --space-xs: 0.25em;
+  --space-sm-xs: 0.35em;
   --space-sm: 0.5em;
   --space-sm-md: 0.75em;
   --space-md: 1em;
@@ -9,15 +10,22 @@
 
   /* Borders */
   --border-width: 3px;
+  --border-width--small: 2px;
   --border-width--focus: calc(var(--text-scale-ratio) * var(--border-width));
+  --border-width--focus--small: calc(var(--text-scale-ratio) * var(--border-width--small));
   --standard-border: var(--border-width) solid var(--black);
+  --thinner-border: var(--border-width--small) solid var(--black);
   --focus-border: var(--border-width--focus) solid var(--colour-primary--medium-contrast);
+  --focus-border--light: var(--border-width--focus) solid var(--colour-primary--light);
+  --focus-border--thinner: var(--border-width--focus--small) solid var(--colour-primary--medium-contrast);
+  --card-border--light-bg: var(--border-width) solid var(--black--translucent--10);
+  --card-border--dark-bg: var(--border-width) solid var(--white--translucent--10);
 
   /* Shadows */
   --shadow-size: 4px;
-  --standard-up-shadow: 0px calc(var(--shadow-size) * -1) var(--shadow-size) var(--black--more-translucent);
-  --standard-down-shadow: 0px var(--shadow-size) var(--shadow-size) var(--black--more-translucent);
-  --standard-centre-shadow: 0px 0px var(--shadow-size) var(--shadow-size) var(--black--more-translucent);
+  --standard-up-shadow: 0px calc(var(--shadow-size) * -1) var(--shadow-size) var(--black--translucent--10);
+  --standard-down-shadow: 0px var(--shadow-size) var(--shadow-size) var(--black--translucent--10);
+  --standard-centre-shadow: 0px 0px var(--shadow-size) var(--shadow-size) var(--black--translucent--10);
 }
 
 /* Box model fix from lecture slides */
@@ -27,3 +35,66 @@ html {
 *, *::before, *::after {
   box-sizing: inherit;
 }
+
+/* LINKS, BUTTONS */
+a {
+  text-decoration: none;
+  color: var(--black);
+}
+.category-card:hover *, .blog-card:hover *, .product-card:hover .product-card__text-wrapper__info * {
+  text-decoration: underline;
+}
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding-block: 0;
+  padding-inline: 0;
+}
+.button--filled {
+  background-color: var(--colour-secondary--medium-contrast);
+}
+.button--primary {
+  background-color: var(--colour-secondary);
+  color: var(--colour-secondary--dark);
+  font-weight: var(--body-bold-weight);
+  padding: var(--space-md) var(--space-sm);
+}
+
+/* Input */
+input {
+  padding: var(--space-sm-md) var(--space-md);
+  border: var(--standard-border);
+  background-color: var(--white);
+  transition:
+    box-shadow var(--transition-duration),
+    opacity var(--transition-duration) linear;
+}
+:focus, .blog-card:focus , .product-card:focus, input[type="checkbox" i]:focus + .checkbox-fieldset__label__box, .categories-blog__blog-wrapper__toggle:focus, .categories-blog__categories-wrapper__toggle:focus  {
+  border: var(--focus-border);
+  box-shadow: var(--standard-centre-shadow);
+  outline: none;
+}
+.button--filled:focus {
+  border: var(--focus-border--light);
+}
+input[type="checkbox" i] {
+  margin: 0;
+  margin-right: var(--space-xs);
+  width: var(--text-body-size);
+  height: var(--text-body-size);
+}
+label {
+  cursor: pointer;
+}
+input[type="checkbox" i]:focus + .checkbox-fieldset__label__box {
+  border: var(--focus-border--thinner);
+}
+
+/* tmp */
+main img {
+  width: 50%;
+}
+/* a > img {
+  width: 30px;
+} */

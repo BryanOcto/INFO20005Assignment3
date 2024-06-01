@@ -8,6 +8,8 @@
   --colour-secondary: #9FE52E;
   --colour-secondary--medium-contrast: #547F10;
   --colour-secondary--dark: #263D03;
+  --colour-secondary--dark--translucent--45: #263D0373;
+  --colour-secondary--dark--transparent: #263D0300; /* 0% */
   --colour-secondary--light: #E3F9BF;
 
   --colour-tertiary: #E52E9F;
@@ -16,14 +18,15 @@
   --colour-tertiary--light: #FFDFF3;
 
   --white: #F6F9F2;
-  --white--translucent--90: #F6F9F2E6; /* 90% */
-  --white--translucent--81: #F6F9F2CF; /* 81% */
-  --white--translucent--45: #F6F9F273; /* 45% */
+  --white--translucent--90: #F6F9F2E6;
+  --white--translucent--81: #F6F9F2CF;
+  --white--translucent--45: #F6F9F273;
+  --white--translucent--10: #F6F9F21A;
   --white--transparent: #F6F9F200; /* 0% */
   --grey: #7A8073;
   --black: #0D1600;
-  --black--translucent: #0D160080;
-  --black--more-translucent: #0D16001A;
+  --black--translucent--50: #0D160080;
+  --black--translucent--10: #0D16001A;
   /* Thanks on the guide on translucency https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4 */
 
   /* Gradients

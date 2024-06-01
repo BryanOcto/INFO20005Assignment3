@@ -1,14 +1,3 @@
-/* LINKS, BUTTONS */
-a {
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-button {
-  cursor: pointer;
-}
-
 /* HEADER */
 /* Avoid scrolling when menus are open */
 .body--overlay-open {
@@ -59,7 +48,7 @@ nav::before, .search::before {
   width: 100%;
   /* Subtract the height of the menu bar it belongs to. */
   height: calc(100vh - 100%);
-  background-color: var(--black--translucent);
+  background-color: var(--black--translucent--50);
   z-index: -2;
 }
 .nav--active::before, .search--active > *:not(.search__group), .search--active::before {
@@ -120,11 +109,6 @@ nav::before, .search::before {
   height: var(--button-size);
   margin: 0;
   padding: 0;
-  background: none;
-  border: none;
-}
-.nav__icon-group__icon--filled, .search__close {
-  background-color: var(--colour-secondary--medium-contrast);
 }
 .nav__icon-group__icon > img, .search__close > img {
   display: inline-block;
@@ -143,19 +127,7 @@ nav::before, .search::before {
   flex-basis: 0;
   flex-grow: 999;
   height: calc(100% - 2 * var(--space-sm));
-  margin: 0 var(--space-md);
-  padding: var(--space-sm-md) var(--space-md);
-
-  border: var(--standard-border);
-  background-color: var(--white);
-  transition:
-    box-shadow var(--transition-duration),
-    opacity var(--transition-duration) linear;
-}
-.search__input:focus {
-  border: var(--focus-border);
-  box-shadow: var(--standard-centre-shadow);
-  outline: none;
+  margin: 0 var(--space-md); 
 }
 
 .search__group {
@@ -163,6 +135,7 @@ nav::before, .search::before {
   bottom: 100%;
   background-color: var(--white);
   max-height: calc(100vh - 100%);
+  width: 100%;
 }
 .search__group__intro {
   position: relative;
@@ -217,26 +190,25 @@ nav::before, .search::before {
   overflow-y: scroll;
 }
 
-.categories-blog {
+.categories-blog, .products {
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
-  margin: var(--space-md) 0;
-  transition: height var(--transition-duration);
+  margin-top: var(--space-xl);
+
+  width: 100%;
+  max-width: 100%;
 }
-.categories-blog h2 {
-  margin-bottom: var(--space-sm);
+.categories-blog h2, .products h2 {
+  margin-bottom: var(--space-xs);
 }
 .categories-blog > div {
   margin-bottom: var(--space-xl);
 }
-/* tmp */
-.categories-blog img {
-  width: 50%;
-}
 
-.categories-blog__categories-wrapper {
+.categories-blog__categories-wrapper, .categories-blog__blog-wrapper {
   --min-card-width: 20em;
+
   display: grid;
   width: 100%;
   /* Thanks https://youtu.be/qII5BueXWD4 */
@@ -247,12 +219,20 @@ nav::before, .search::before {
   --expand-button-size: 70px;
   --expand-icon-size: 40px;
   max-height: calc(var(--category-card-height) + var(--expand-button-size));
+  /* Allows for the hover animation to not get clipped */
+  padding-top: var(--space-sm);
   padding-bottom: var(--expand-button-size);
   overflow: hidden;
   position: relative;
 
   /* Idea from https://stackoverflow.com/questions/3508605/how-can-i-transition-height-0-to-height-auto-using-css */
   transition: max-height var(--transition-duration);
+}
+.categories-blog__blog-wrapper {
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
+  /* Allows for the hover animation to not get clipped */
+  padding-top: var(--space-sm);
 }
 .segment--active {
   max-height: 100%;
@@ -261,10 +241,10 @@ nav::before, .search::before {
   position: static;
 }
 
-.segment--active .categories-blog__categories-wrapper__toggle img {
+.segment--active .categories-blog__categories-wrapper__toggle img, .segment--active .categories-blog__blog-wrapper__toggle img {
   transform: rotate(180deg);
 }
-.categories-blog__categories-wrapper__toggle {
+.categories-blog__categories-wrapper__toggle, .categories-blog__blog-wrapper__toggle {
   position: absolute;
   height: var(--expand-button-size);
   width: 100%;
@@ -273,41 +253,69 @@ nav::before, .search::before {
   bottom: 0;
   border: none;
   background: linear-gradient(180deg, var(--white--transparent) 0%, var(--white--translucent--45) 10%, var(--white) 100%);
+  z-index: 1;
 }
-.categories-blog__categories-wrapper__toggle img {
+.categories-blog__categories-wrapper__toggle img, .categories-blog__blog-wrapper__toggle img {
   height: var(--expand-icon-size);
   width: var(--expand-icon-size);
   transition: transform var(--transition-duration);
 }
 
-.category-card__text-wrapper {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: calc(var(--img-width) - calc(var(--img-width--decimal) * (100% - var(--overlay-width))) / 2);
-  width: calc(100% - var(--img-width) + calc(var(--img-width--decimal) * (100% - var(--overlay-width))) / 2);
-  padding-right: var(--space-lg);
-}
-.category-card__text-wrapper h3 {
-  margin-bottom: var(--space-xs);
-}
-
-.category-card {
+.category-card, .blog-card {
   position: relative;
   display: flex;
   flex-direction: row;
   width: 100%;
+}
+.category-card, .blog-card {
+  --transition-duration--short: .1s;
+  --transition-timing-function: ease-out;
+}
+.category-card {
   --img-width: 60%;
   --img-width--decimal: 0.6;
   --overlay-width: 65%;
+
+  transition:
+    transform var(--transition-duration--short) var(--transition-timing-function),
+    filter var(--transition-duration--short) var(--transition-timing-function);
+}
+.category-card:hover {
+  transform: translateY(calc(-1 * var(--space-xs)));
+  filter: drop-shadow(var(--standard-down-shadow));
+}
+.blog-card {
+  --img-width: 20%;
+  --text-width: calc(100% - var(--img-width));
+  border: var(--card-border--light-bg);
+  height: min-content;
+  /* Justify the content to the left to make space for the image on the left */
+  justify-content: end;
+
+  transition:
+    transform var(--transition-duration--short) var(--transition-timing-function),
+    box-shadow var(--transition-duration--short) var(--transition-timing-function);
+}
+.blog-card:hover {
+  transform: translateY(calc(-1 * var(--space-xs)));
+  box-shadow: var(--standard-down-shadow);
 }
 /* Idea from https://community.hubspot.com/t5/CMS-Development/Adding-a-colour-overlay-to-an-image/m-p/780238#:~:text=To%20add%20a%20color%20overlay,a%20semi%2Dtransparent%20background%20color.&text=In%20this%20code%2C%20the%20%3A%3A,to%20cover%20the%20entire%20area */
-.category-card picture {
+.category-card picture, .blog-card picture {
   position: relative;
-  flex-basis: var(--img-width);
-  height: var(--category-card-height);
 }
-.category-card picture img {
+.category-card picture {
+  height: var(--category-card-height);
+  flex-basis: var(--img-width);
+}
+.blog-card picture {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--img-width);
+}
+.category-card picture img, .blog-card picture img {
   object-fit: cover;
   width: 100%;
   height: 100%;
@@ -320,6 +328,81 @@ nav::before, .search::before {
   height: 100%;
   width: 100%;
   background-image: linear-gradient(90deg, var(--white--transparent) 0%, var(--white--translucent--45) calc(var(--overlay-width) - 1%), var(--white--translucent--81) var(--overlay-width), var(--white--translucent--90) 100%);
+}
+
+.category-card__text-wrapper {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: calc(var(--img-width) - calc(var(--img-width--decimal) * (100% - var(--overlay-width))) / 2);
+  width: calc(100% - var(--img-width) + calc(var(--img-width--decimal) * (100% - var(--overlay-width))) / 2);
+  padding-right: var(--space-lg);
+}
+.category-card__text-wrapper h3, .blog-card__text-wrapper h3 {
+  margin-bottom: var(--space-xs);
+}
+
+.blog-card__text-wrapper {
+  padding: var(--space-md);
+  flex-basis: var(--text-width);
+  height: min-content;
+}
+
+
+.products__filters {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: var(--space-lg) var(--space-md);
+  gap: var(--space-md);
+}
+
+.price-fieldset, .checkbox-fieldset {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: var(--space-sm);
+}
+.checkbox-fieldset {
+  grid-row-gap: var(--space-xs);
+}
+
+.price-fieldset__label {
+  font-style: italic;
+  width: 100%;
+}
+.price-fieldset__label input {
+  width: 100%;
+  margin-top: var(--space-xs);
+}
+
+.price-fieldset__legend, .checkbox-fieldset__legend {
+  grid-column: 1 / span 2;
+  margin-bottom: var(--space-xs);
+}
+.checkbox-fieldset__label {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+.checkbox-fieldset__label__box {
+  display: block;
+  width: var(--text-body-size--large);
+  height: var(--text-body-size--large);
+  border: var(--thinner-border);
+} 
+.checkbox-fieldset__label__box img {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.checkbox-fieldset__label input:checked + .checkbox-fieldset__label__box img {
+  opacity: 1;
+}
+.checkbox-fieldset__label input {
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 /* Desktop */
@@ -369,11 +452,26 @@ nav::before, .search::before {
     width: 25%;
   }
 
-  /* this doesn't work... */
-  /* .search__group__intro {
-    --max-content-width: 70em;
-    grid-template-columns: minmax(13fr, calc(0.65 * var(--max-content-width))) minmax(7fr, calc(0.35 * var(--max-content-width))); 
-  } */
+  .categories-blog > div {
+    margin-bottom: var(--space-md);
+  }
+
+  .products {
+    grid-template-columns: 20em 1fr;
+    grid-template-areas:
+      "h2 h2"
+      "filters carousel";
+  }
+  .products h2 {
+    grid-area: h2;
+  }
+  .products .carousel {
+    grid-area: carousel;
+  }
+  .products__filters {
+    grid-area: filters;
+    padding-top: 0;
+  }
 }
 @media(min-width: 85em) {
   nav, .search {
@@ -396,6 +494,14 @@ nav::before, .search::before {
   .nav__link-list > li > a {
     font-size: var(--text-body-size);
   }
+
+  .categories-blog__blog-wrapper, .products {
+    padding-left: var(--space-xl);
+    padding-right: var(--space-xl);
+  }
+  .products__filters {
+    padding-left: 0;
+  }
 }
 
 /* UTILITIES */
@@ -403,11 +509,3 @@ nav::before, .search::before {
 .hidden, .nav--hidden::before, .search--hidden::before {
   display: none;
 }
-
-/* tmp */
-main img {
-  width: 50%;
-}
-/* a > img {
-  width: 30px;
-} */

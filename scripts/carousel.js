@@ -45,7 +45,6 @@ function handleOverflow(carousel, buttonLeft, buttonRight) {
     if (carousel.dataset.isInTransition === "false") {
       clearInterval(intervalID);
       handleOverflowAfterDelay(carousel, buttonLeft, buttonRight);
-      console.log("I'm called!");
     }
   }, 10);
 }

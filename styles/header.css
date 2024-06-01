@@ -507,5 +507,5 @@ nav::before, .search::before {
 /* UTILITIES */
 /* Hidden classes for menus and transitions */
 .hidden, .nav--hidden::before, .search--hidden::before {
-  display: none;
+  display: none !important;
 }

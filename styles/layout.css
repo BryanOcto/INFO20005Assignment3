@@ -53,10 +53,11 @@
 /* max-width on content wrapper to prevent increase in width. */
 .max-width {
   width: 100%;
-  max-width: 50rem;
+  --max-width: 50rem;
+  max-width: var(--max-width);
 }
-.max-width--children > * {
-  max-width: 50rem;
+.max-width--larger {
+  max-width: calc(var(--max-width) + 2 * 3.75rem);
 }
 
 /* Information for screenreaders only 

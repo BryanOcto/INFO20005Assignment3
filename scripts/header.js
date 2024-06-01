@@ -60,9 +60,14 @@ function toggleMenu() {
   openButton.classList.toggle("nav__open-button--active");
 }
 
-// Must close the mobile menu when desktop reached
+// Must close the mobile menu when desktop reached, and remove the hidden class. Will also check on load
+handleMenuResize();
 function handleMenuResize() {
-  if (window.innerWidth >= desktopSmallWidth && menuIsOpen) {
+  if (window.innerWidth < desktopSmallWidth) {
+    return;
+  }
+  list.classList.remove("hidden");
+  if (menuIsOpen) {
     toggleMenu();
   }
 }

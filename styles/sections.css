@@ -16,7 +16,7 @@ main section h2 {
   --decoration-size: 8.5rem;
   position: relative;
 }
-.section--dark-bg::before {
+.section--dark-bg > div::before {
   content: "";
   position: absolute;
   left: 0;
@@ -28,14 +28,14 @@ main section h2 {
   background-size: cover;
   background-repeat: no-repeat;
 }
-.section--dark-bg--right-decoration::before {
+.section--dark-bg--right-decoration > div::before {
   left: unset;
   right: 0;
 }
-.section--dark-bg > p {
+.section--dark-bg > div > p {
   color: var(--white);
 }
-.section--dark-bg:not(.hero) > p {
+.section--dark-bg:not(.hero) > div > p {
   text-align: center;
   width: 60%;
 }
@@ -44,17 +44,17 @@ main section h2 {
 }
 
 /* Hero section */
-.hero::after {
+.hero > div::after {
   width: 30%;
 }
 .hero h1 {
   padding-top: calc(var(--decoration-size) - 0.75em);
 }
-.hero > p:first-of-type {
+.hero > div > p:first-of-type {
   font-size: var(--text-body-size--large);
   line-height: var(--text-body-line-height--large);
 }
-.hero > * {
+.hero > div > * {
   max-width: 75%;
 }
 .hero a {
@@ -78,17 +78,23 @@ main section h2 {
   padding: 0;
   padding-bottom: var(--space-md);
 }
-.featured > p {
+.featured > div > p {
   padding-bottom: var(--space-sm);
 }
 
 /* About us */
-.about-us {
-  padding-bottom: var(--space-xl);
+.about-us h2 {
+  padding-bottom: var(--space-sm);
 }
 .about-us p {
   line-height: var(--text-body-line-height--large);
+  align-self: flex-start;
+}
+.about-us p + p {
   margin-top: var(--space-md);
+}
+.about-us p:last-child {
+  margin-bottom: var(--space-xl);
 }
 .about-us__p-with-side {
   position: relative;
@@ -143,7 +149,7 @@ main section h2 {
 .news-and-events h2 {
   color: var(--colour-primary--light);
 }
-.news-and-events > p {
+.news-and-events > div > p {
   text-align: center;
   width: 75%;
   color: var(--white);
@@ -184,6 +190,7 @@ main section h2 {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  max-width: 25rem;
   margin-bottom: var(--space-xxl);
 }
 .news-and-events__socials > a {
@@ -194,4 +201,114 @@ main section h2 {
 .news-and-events__socials > a > img {
   width: var(--icon-size);
   height: var(--icon-size);
+}
+
+/* Desktop */
+@media(min-width: 50em) {
+  main {
+    margin-bottom: 0;
+  }
+
+  .hero > div, .featured > div {
+    position: relative;
+  }
+  .section--dark-bg > div::before {
+    left: calc(-1 * var(--space-xl));
+  }
+  .section--dark-bg--right-decoration > div::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .news-and-events__form {
+    display: grid;
+    grid-template-columns: 1fr 15em;
+    justify-content: unset;
+  }
+  .news-and-events__form__button {
+    margin-top: calc(var(--space-md));
+    padding: calc(var(--space-sm-md) / var(--text-scale-ratio) / var(--text-scale-ratio)) var(--space-md);
+  }
+  .news-and-events__form__label--checkbox, .news-and-events__form__note {
+    grid-column: span 2;
+  }
+
+  .about-us {
+    position: relative;
+  }
+  .about-us > div {
+    z-index: 2;
+  }
+  .about-us::before, .about-us::after {
+    content: "";
+    position: absolute;
+    display: block;
+
+    --max-width: 50rem;
+    --leftover-width: calc((100% - var(--max-width)) / 2);
+    --overlay-width: 3rem;
+    --intro-height: calc(2.5 * var(--text-heading-size));
+    /* That last subtraction is from the margin-bottom of the last child */
+    --paragraph-height: calc(100% - var(--intro-height) - var(--space-xl));
+    --top-bottom-padding: var(--space-md);
+
+    width: calc(var(--leftover-width) + var(--overlay-width));
+    z-index: 1;
+    background-size: cover;
+    background-repeat: no-repeat;
+    top: calc(var(--intro-height) + var(--paragraph-height) / 2);
+    transform: translateY(-50%);
+  }
+  .about-us::before {
+    left: 0;
+    height: 5rem;
+    background-size: contain;
+    background-image:
+      linear-gradient(-90deg, var(--white) 0%, var(--white--translucent--45) var(--overlay-width), var(--white--translucent--10) 100%),
+      url("/images/svg/decorativeText--reversed.svg");
+    background-position: left;
+  }
+  .about-us::after {
+    right: 0;
+    background-image:
+      linear-gradient(90deg, var(--white) 0%, var(--white--translucent--81) calc(var(--overlay-width) + var(--top-bottom-padding) - 1%), var(--white--translucent--45) calc(var(--overlay-width) + var(--top-bottom-padding)), var(--white--translucent--10) 100%),
+      url("/images/raster/vikingCharacter2.png");
+    height: calc(var(--paragraph-height) + 2 * var(--top-bottom-padding));
+  }
+  .about-us__p-with-side {
+    padding-right: 0;
+  }
+  .about-us__p-with-side::before {
+    content: unset;
+  }
+
+  .categories__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: unset;
+  }
+  .categories__wrapper .category-card {
+    --img-width: 70%;
+  }
+  .categories__wrapper .category-card:not(.category-card--right) {
+    text-align: right;
+  }
+  .category-card--right {
+    flex-direction: row-reverse;
+  }
+  .categories__wrapper .category-card .category-card__text-wrapper {
+    left: calc(var(--img-width) - calc(var(--img-width--decimal) * (100% - var(--overlay-width))) / 1.25);
+    padding-right: 0;
+
+    width: calc(100% - var(--img-width) + calc(var(--img-width--decimal) * (100% - var(--overlay-width))) / 1.75);
+  }
+  .categories__wrapper .category-card--right .category-card__text-wrapper {
+    left: unset;
+    right: calc(var(--img-width) - calc(var(--img-width--decimal) * (100% - var(--overlay-width))) / 1.25);
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .category-card--right picture::before {
+    background-image: linear-gradient(-90deg, var(--white--transparent) 0%, var(--white--translucent--45) calc(var(--overlay-width) - 1%), var(--white--translucent--81) var(--overlay-width), var(--white--translucent--90) 100%);
+  }
 }

@@ -52,7 +52,7 @@ nav::before, .search::before {
   bottom: 100%;
   width: 100%;
   /* Subtract the height of the menu bar it belongs to. */
-  height: calc(100vh - 100%);
+  height: calc(100vh - 100% + 2 *var(--border-width));
   background-color: var(--black--translucent--50);
   z-index: -2;
 }
@@ -139,7 +139,7 @@ nav::before, .search::before {
   position: absolute;
   bottom: 100%;
   background-color: var(--white);
-  max-height: calc(100vh - 100%);
+  max-height: calc(100vh - 100% + 2 *var(--border-width));
   width: 100%;
 }
 .search__group__intro {
@@ -160,7 +160,7 @@ nav::before, .search::before {
   grid-column: 1/2;
 }
 /* Trick from StackOverflow to resize size https://stackoverflow.com/questions/6668577/using-before-css-pseudo-element-to-add-image-to-modal/6668643#6668643 */
-.search__group__intro::before, .hero::after {
+.search__group__intro::before, .hero > div::after {
   content: '';
   position: absolute;
   display: block;

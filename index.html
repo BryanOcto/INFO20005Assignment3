@@ -8,14 +8,14 @@
 
   <link rel="icon" href="./images/raster/BerkserKeys-Logo--favicon.jpg">
 
-  <link rel="stylesheet" href="styles/reset.css">
-  <link rel="stylesheet" href="styles/colours.css">
-  <link rel="stylesheet" href="styles/typography.css">
-  <link rel="stylesheet" href="styles/misc.css">
-  <link rel="stylesheet" href="styles/layout.css">
-  <link rel="stylesheet" href="styles/header.css">
-  <link rel="stylesheet" href="styles/carousel.css">
-  <link rel="stylesheet" href="styles/home.css">
+  <link rel="stylesheet" href="./styles/reset.css">
+  <link rel="stylesheet" href="./styles/colours.css">
+  <link rel="stylesheet" href="./styles/typography.css">
+  <link rel="stylesheet" href="./styles/misc.css">
+  <link rel="stylesheet" href="./styles/layout.css">
+  <link rel="stylesheet" href="./styles/header.css">
+  <link rel="stylesheet" href="./styles/carousel.css">
+  <link rel="stylesheet" href="./styles/home.css">
 
   <!-- Sources for assets used throughout the website: -->
   <!-- Icons sourced from Google Font's icons: Material Symbols -->
@@ -27,7 +27,7 @@
 <body>
   <header>
     <nav class="cluster nav--hidden">
-      <a href="index.html" class="nav__logo"><img src="/images/raster/BerserKeys-Logo--square.jpg" alt="BerserKeys logo; Home page"></a>
+      <a href="./index.html" class="nav__logo"><img src="./images/raster/BerserKeys-Logo--square.jpg" alt="BerserKeys logo; Home page"></a>
       <ul class="nav__link-list hidden">
         <li><a href="#">Products</a></li>
         <li><a href="#">About</a></li>
@@ -36,17 +36,17 @@
         <li><a href="#">Coming Soon</a></li>
       </ul>
       <div class="cluster">
-        <a href="#" class="centre nav__icon-group__icon"><img src="/images/svg/accountCircle.svg" alt="Account page"></a>
-        <button class="centre nav__icon-group__icon" onclick="openSearch()"><img src="/images/svg/search.svg" alt="Search menu"></button>
-        <a href="shopping-cart.html" class="centre nav__icon-group__icon"><img src="/images/svg/shoppingCart.svg" alt="Shopping cart"></a>
-        <button class="centre button--filled nav__icon-group__icon nav__open-button" id="openButton" onclick="toggleMenu()"><img src="images/svg/arrowUp.svg" alt="Open mobile navigation menu"></button>
+        <a href="#" class="centre nav__icon-group__icon"><img src="./images/svg/accountCircle.svg" alt="Account page"></a>
+        <button class="centre nav__icon-group__icon" onclick="openSearch()"><img src="./images/svg/search.svg" alt="Search menu"></button>
+        <a href="./shopping-cart.html" class="centre nav__icon-group__icon"><img src="./images/svg/shoppingCart.svg" alt="Shopping cart"></a>
+        <button class="centre button--filled nav__icon-group__icon nav__open-button" id="openButton" onclick="toggleMenu()"><img src="./images/svg/arrowUp.svg" alt="Open mobile navigation menu"></button>
       </div>
     </nav>
     <section class="centre search hidden" role="search">
       <!-- In desktop, removed logo home button and kept mobile aesthetic to close search because it made more sense to code and doesn't significantly hamper UI/UX. Increases consistency too. -->
       <div class="cluster max-width">
         <input class="search__input" type="search" name="search" placeholder="e.g. switches, AULA F68, ...">
-        <button class="button--filled search__close" onclick="closeSearch()"><img src="images/svg/close.svg" alt="Close search menu"></button>
+        <button class="button--filled search__close" onclick="closeSearch()"><img src="./images/svg/close.svg" alt="Close search menu"></button>
       </div>
       <div class="search__group centre--horizontal">
         <div class="search__group__intro max-width">
@@ -62,11 +62,11 @@
           <div class="categories-blog">
             <h2>Categories</h2>
             <div class="categories-blog__categories-wrapper">
-              <button class="categories-blog__categories-wrapper__toggle" ><img src="images/svg/arrowDown--dark.svg" alt="Expand search results for categories"></button>
+              <button class="categories-blog__categories-wrapper__toggle" ><img src="./images/svg/arrowDown--dark.svg" alt="Expand search results for categories"></button>
               <a href="#" class="category-card">
                 <!-- alt left empty for category images since they are decorative. -->
                 <picture>
-                  <img src="/images/raster/switchesCategory.png" alt="">
+                  <img src="./images/raster/switchesCategory.png" alt="">
                 </picture>
                 <div class="category-card__text-wrapper">
                   <h3>Switches</h3>
@@ -76,7 +76,7 @@
               <a href="#" class="category-card">
                 <!-- alt left empty for category images since they are decorative. -->
                 <picture>
-                  <img src="/images/raster/switchesCategory.png" alt="">
+                  <img src="./images/raster/switchesCategory.png" alt="">
                 </picture>
                 <div class="category-card__text-wrapper">
                   <h3>Switches</h3>
@@ -86,7 +86,7 @@
               <a href="#" class="category-card">
                 <!-- alt left empty for category images since they are decorative. -->
                 <picture>
-                  <img src="/images/raster/switchesCategory.png" alt="">
+                  <img src="./images/raster/switchesCategory.png" alt="">
                 </picture>
                 <div class="category-card__text-wrapper">
                   <h3>Switches</h3>
@@ -96,7 +96,7 @@
               <a href="#" class="category-card">
                 <!-- alt left empty for category images since they are decorative. -->
                 <picture>
-                  <img src="/images/raster/switchesCategory.png" alt="">
+                  <img src="./images/raster/switchesCategory.png" alt="">
                 </picture>
                 <div class="category-card__text-wrapper">
                   <h3>Switches</h3>
@@ -106,10 +106,10 @@
             </div>
             <h2>Blog</h2>
             <div class="categories-blog__blog-wrapper">
-              <button class="categories-blog__blog-wrapper__toggle" ><img src="images/svg/arrowDown--dark.svg" alt="Expand search results for categories"></button>
+              <button class="categories-blog__blog-wrapper__toggle" ><img src=".images/svg/arrowDown--dark.svg" alt="Expand search results for categories"></button>
               <a href="#" class="blog-card">
                 <picture>
-                  <img src="/images/raster/blogImage.png" alt="">
+                  <img src="./images/raster/blogImage.png" alt="">
                 </picture>
                 <div class="blog-card__text-wrapper">
                   <h3>Comparing types of mechanical keyboard switches</h3>
@@ -118,7 +118,7 @@
               </a>
               <a href="#" class="blog-card">
                 <picture>
-                  <img src="/images/raster/blogImage.png" alt="">
+                  <img src="./images/raster/blogImage.png" alt="">
                 </picture>
                 <div class="blog-card__text-wrapper">
                   <h3>Slightly shorter title</h3>
@@ -127,7 +127,7 @@
               </a>
               <a href="#" class="blog-card">
                 <picture>
-                  <img src="/images/raster/blogImage.png" alt="">
+                  <img src="./images/raster/blogImage.png" alt="">
                 </picture>
                 <div class="blog-card__text-wrapper">
                   <h3>Comparing types of mechanical keyboard switches</h3>
@@ -136,7 +136,7 @@
               </a>
               <a href="#" class="blog-card">
                 <picture>
-                  <img src="/images/raster/blogImage.png" alt="">
+                  <img src="./images/raster/blogImage.png" alt="">
                 </picture>
                 <div class="blog-card__text-wrapper">
                   <h3>Comparing types of mechanical keyboard switches</h3>
@@ -145,7 +145,7 @@
               </a>
               <a href="#" class="blog-card">
                 <picture>
-                  <img src="/images/raster/blogImage.png" alt="">
+                  <img src="./images/raster/blogImage.png" alt="">
                 </picture>
                 <div class="blog-card__text-wrapper">
                   <h3>Comparing types of mechanical keyboard switches; slightly longer title</h3>
@@ -157,13 +157,13 @@
           <div class="products max-width">
             <h2>Products</h2>
             <div class="carousel carousel--light" data-current-position="1" data-is-in-transition="false">
-              <button class="centre button--filled carousel__toggle" onclick="moveLeft(this.parentElement, this, this.nextElementSibling)" disabled><img src="images/svg/arrowLeft.svg" alt="Scroll carousel to the left"></button>
-              <button class="centre button--filled carousel__toggle" onclick="moveRight(this.parentElement, this.previousElementSibling, this)"><img src="images/svg/arrowRight.svg" alt="Scroll carousel to the right"></button>
+              <button class="centre button--filled carousel__toggle" onclick="moveLeft(this.parentElement, this, this.nextElementSibling)" disabled><img src="./images/svg/arrowLeft.svg" alt="Scroll carousel to the left"></button>
+              <button class="centre button--filled carousel__toggle" onclick="moveRight(this.parentElement, this.previousElementSibling, this)"><img src="./images/svg/arrowRight.svg" alt="Scroll carousel to the right"></button>
               <div class="carousel__card-mask">
                 <div class="carousel__card-mask__card-container">
-                  <a href="/products/TTCBluishWhite.html" class="product-card product-card--light" data-filtered="false">
+                  <a href="./products/TTCBluishWhite.html" class="product-card product-card--light" data-filtered="false">
                     <picture class="product-card__picture">
-                      <img src="/images/raster/TTCBluishWhite1.webp" alt="TTC Bluish White Product Image Preview">
+                      <img src="./images/raster/TTCBluishWhite1.webp" alt="TTC Bluish White Product Image Preview">
                     </picture>
                     <div class="product-card__text-wrapper">
                       <div class="product-card__text-wrapper__info">
@@ -184,7 +184,7 @@
                   </a>
                   <a href="#" class="product-card product-card--light" data-filtered="false">
                     <picture class="product-card__picture">
-                      <img src="/images/raster/TTCFlamingPurple1.png" alt="TTC Flaming Purple Product Image Preview">
+                      <img src="./images/raster/TTCFlamingPurple1.png" alt="TTC Flaming Purple Product Image Preview">
                     </picture>
                     <div class="product-card__text-wrapper">
                       <div class="product-card__text-wrapper__info">
@@ -205,7 +205,7 @@
                   </a>
                   <a href="#" class="product-card product-card--light" data-filtered="true">
                     <picture class="product-card__picture">
-                      <img src="/images/raster/PryzmaSeafoam1.png" alt="Pryzma Seafoam Product Image Preview">
+                      <img src="./images/raster/PryzmaSeafoam1.png" alt="Pryzma Seafoam Product Image Preview">
                     </picture>
                     <div class="product-card__text-wrapper">
                       <div class="product-card__text-wrapper__info">
@@ -227,7 +227,7 @@
                   </a>
                   <a href="#" class="product-card product-card--light" data-filtered="false">
                     <picture class="product-card__picture product-card__picture--contain">
-                      <img src="/images/raster/LeobogGraywoodV41.png" alt="Leobog Graywood V4 Product Image Preview">
+                      <img src="./images/raster/LeobogGraywoodV41.png" alt="Leobog Graywood V4 Product Image Preview">
                     </picture>
                     <div class="product-card__text-wrapper">
                       <div class="product-card__text-wrapper__info">
@@ -247,7 +247,7 @@
                   </a>
                   <a href="#" class="product-card product-card--out-of-stock product-card--light" data-filtered="true">
                     <picture class="product-card__picture product-card__picture--contain">
-                      <img src="/images/raster/LeobogNimbusV31.png" alt="Leobog Nimbus V3 Product Image Preview">
+                      <img src="./images/raster/LeobogNimbusV31.png" alt="Leobog Nimbus V3 Product Image Preview">
                     </picture>
                     <div class="product-card__text-wrapper">
                       <div class="product-card__text-wrapper__info">
@@ -265,9 +265,9 @@
                       </div>
                     </div>
                   </a>
-                  <a href="products/LeobogJuggleV2.html" class="product-card product-card--light" data-filtered="false">
+                  <a href="./products/LeobogJuggleV2.html" class="product-card product-card--light" data-filtered="false">
                     <picture class="product-card__picture">
-                      <img src="/images/raster/LeobogJuggleV21.png" alt="Leobog Juggle V2 Product Image Preview">
+                      <img src="./images/raster/LeobogJuggleV21.png" alt="Leobog Juggle V2 Product Image Preview">
                     </picture>
                     <div class="product-card__text-wrapper">
                       <div class="product-card__text-wrapper__info">
@@ -306,27 +306,27 @@
                 <label class="checkbox-fieldset__label">
                   TTC (2)
                   <input type="checkbox" name="TTCIsSelected">
-                  <div class="checkbox-fieldset__label__box"><img src="/images/svg/check.svg" alt="" class="checkbox-fieldset__label__check"></div>
+                  <div class="checkbox-fieldset__label__box"><img src="./images/svg/check.svg" alt="" class="checkbox-fieldset__label__check"></div>
                 </label>
                 <label class="checkbox-fieldset__label">
                   Aflion (0)
                   <input type="checkbox" name="AflionIsSelected">
-                  <div class="checkbox-fieldset__label__box"><img src="/images/svg/check.svg" alt="" class="checkbox-fieldset__label__check"></div>
+                  <div class="checkbox-fieldset__label__box"><img src="./images/svg/check.svg" alt="" class="checkbox-fieldset__label__check"></div>
                 </label>
                 <label class="checkbox-fieldset__label">
                   Pryzma (1)
                   <input type="checkbox" name="PryzmaIsSelected">
-                  <div class="checkbox-fieldset__label__box"><img src="/images/svg/check.svg" alt="" class="checkbox-fieldset__label__check"></div>
+                  <div class="checkbox-fieldset__label__box"><img src="./images/svg/check.svg" alt="" class="checkbox-fieldset__label__check"></div>
                 </label>
                 <label class="checkbox-fieldset__label">
                   BerserKeys (0)
                   <input type="checkbox" name="BerserKeysIsSelected">
-                  <div class="checkbox-fieldset__label__box"><img src="/images/svg/check.svg" alt="" class="checkbox-fieldset__label__check"></div>
+                  <div class="checkbox-fieldset__label__box"><img src="./images/svg/check.svg" alt="" class="checkbox-fieldset__label__check"></div>
                 </label>
                 <label class="checkbox-fieldset__label">
                   Leobog (3)
                   <input type="checkbox" name="LeobogIsSelected">
-                  <div class="checkbox-fieldset__label__box"><img src="/images/svg/check.svg" alt="" class="checkbox-fieldset__label__check"></div>
+                  <div class="checkbox-fieldset__label__box"><img src="./images/svg/check.svg" alt="" class="checkbox-fieldset__label__check"></div>
                 </label>
               </fieldset>
               <fieldset class="checkbox-fieldset">
@@ -334,12 +334,12 @@
                 <label class="checkbox-fieldset__label">
                   In stock (6)
                   <input type="checkbox" name="inStockIsSelected">
-                  <div class="checkbox-fieldset__label__box"><img src="/images/svg/check.svg" alt="" class="checkbox-fieldset__label__check"></div>
+                  <div class="checkbox-fieldset__label__box"><img src="./images/svg/check.svg" alt="" class="checkbox-fieldset__label__check"></div>
                 </label>
                 <label class="checkbox-fieldset__label">
                   Out of stock (0)
                   <input type="checkbox" name="outOfStockSelected">
-                  <div class="checkbox-fieldset__label__box"><img src="/images/svg/check.svg" alt="" class="checkbox-fieldset__label__check"></div>
+                  <div class="checkbox-fieldset__label__box"><img src="./images/svg/check.svg" alt="" class="checkbox-fieldset__label__check"></div>
                 </label>
               </fieldset>
               <button class="button--primary product__filters__clear-filters" onclick="clearFilters()">Clear filters</button>
@@ -364,7 +364,7 @@
         <a href="#" class="category-card">
           <!-- alt left empty for category images since they are decorative. -->
           <picture>
-            <img src="/images/raster/keyboardCategory.png" alt="">
+            <img src="./images/raster/keyboardCategory.png" alt="">
           </picture>
           <div class="category-card__text-wrapper">
             <h3>Mechanical Keyboards</h3>
@@ -374,7 +374,7 @@
         <a href="#" class="category-card category-card--right">
           <!-- alt left empty for category images since they are decorative. -->
           <picture>
-            <img src="/images/raster/switchesCategory.png" alt="">
+            <img src="./images/raster/switchesCategory.png" alt="">
           </picture>
           <div class="category-card__text-wrapper">
             <h3>Switches</h3>
@@ -384,7 +384,7 @@
         <a href="#" class="category-card">
           <!-- alt left empty for category images since they are decorative. -->
           <picture>
-            <img src="/images/raster/keycapsCategory.png" alt="">
+            <img src="./images/raster/keycapsCategory.png" alt="">
           </picture>
           <div class="category-card__text-wrapper">
             <h3>Keycaps</h3>
@@ -394,7 +394,7 @@
         <a href="#" class="category-card category-card--right category-card--right">
           <!-- alt left empty for category images since they are decorative. -->
           <picture>
-            <img src="/images/raster/accessoriesCategory.png" alt="">
+            <img src="./images/raster/accessoriesCategory.png" alt="">
           </picture>
           <div class="category-card__text-wrapper">
             <h3>Accessories</h3>
@@ -408,13 +408,13 @@
         <h2>Featured</h2>
         <p>If you only buy one, buy one of these products.</p>
         <div class="carousel carousel--dark" data-current-position="1" data-is-in-transition="false">
-          <button class="centre button--filled carousel__toggle" onclick="moveLeft(this.parentElement, this, this.nextElementSibling)" disabled><img src="images/svg/arrowLeft.svg" alt="Scroll carousel to the left"></button>
-          <button class="centre button--filled carousel__toggle" onclick="moveRight(this.parentElement, this.previousElementSibling, this)"><img src="images/svg/arrowRight.svg" alt="Scroll carousel to the right"></button>
+          <button class="centre button--filled carousel__toggle" onclick="moveLeft(this.parentElement, this, this.nextElementSibling)" disabled><img src=".images/svg/arrowLeft.svg" alt="Scroll carousel to the left"></button>
+          <button class="centre button--filled carousel__toggle" onclick="moveRight(this.parentElement, this.previousElementSibling, this)"><img src=".images/svg/arrowRight.svg" alt="Scroll carousel to the right"></button>
           <div class="carousel__card-mask">
             <div class="carousel__card-mask__card-container">
               <a href="#" class="product-card product-card--dark" data-filtered="false">
                 <picture class="product-card__picture">
-                  <img src="/images/raster/AULAF87Pro1.png" alt="AULA F87 Pro Product Image Preview">
+                  <img src="./images/raster/AULAF87Pro1.png" alt="AULA F87 Pro Product Image Preview">
                 </picture>
                 <div class="product-card__text-wrapper">
                   <div class="product-card__text-wrapper__info">
@@ -435,7 +435,7 @@
               </a>
               <a href="#" class="product-card product-card--dark" data-filtered="false">
                 <picture class="product-card__picture">
-                  <img src="/images/raster/AULAF98Pro1.png" alt="AULA F98 Pro Product Image Preview">
+                  <img src="./images/raster/AULAF98Pro1.png" alt="AULA F98 Pro Product Image Preview">
                 </picture>
                 <div class="product-card__text-wrapper">
                   <div class="product-card__text-wrapper__info">
@@ -455,7 +455,7 @@
               </a>
               <a href="#" class="product-card product-card--dark" data-filtered="false">
                 <picture class="product-card__picture">
-                  <img src="/images/raster/AULAF681.png" alt="AULA F68 Product Image Preview">
+                  <img src="./images/raster/AULAF681.png" alt="AULA F68 Product Image Preview">
                 </picture>
                 <div class="product-card__text-wrapper">
                   <div class="product-card__text-wrapper__info">
@@ -475,7 +475,7 @@
               </a>
               <a href="#" class="product-card product-card--dark" data-filtered="false">
                 <picture class="product-card__picture">
-                  <img src="/images/raster/AULAF751.png" alt="AULA F75 Product Image Preview">
+                  <img src="./images/raster/AULAF751.png" alt="AULA F75 Product Image Preview">
                 </picture>
                 <div class="product-card__text-wrapper">
                   <div class="product-card__text-wrapper__info">
@@ -494,7 +494,7 @@
               </a>
               <a href="#" class="product-card product-card--out-of-stock product-card--dark" data-filtered="true">
                 <picture class="product-card__picture product-card__picture--contain">
-                  <img src="/images/raster/LeobogNimbusV31.png" alt="Leobog Nimbus V3 Product Image Preview">
+                  <img src="./images/raster/LeobogNimbusV31.png" alt="Leobog Nimbus V3 Product Image Preview">
                 </picture>
                 <div class="product-card__text-wrapper">
                   <div class="product-card__text-wrapper__info">
@@ -512,9 +512,9 @@
                   </div>
                 </div>
               </a>
-              <a href="products/LeobogJuggleV2.html" class="product-card product-card--dark" data-filtered="false">
+              <a href="./products/LeobogJuggleV2.html" class="product-card product-card--dark" data-filtered="false">
                 <picture class="product-card__picture product-card__picture">
-                  <img src="/images/raster/LeobogJuggleV21.png" alt="Leobog Juggle V2 Product Image Preview">
+                  <img src="./images/raster/LeobogJuggleV21.png" alt="Leobog Juggle V2 Product Image Preview">
                 </picture>
                 <div class="product-card__text-wrapper">
                   <div class="product-card__text-wrapper__info">
@@ -559,15 +559,15 @@
           <label class="news-and-events__form__label news-and-events__form__label--checkbox">
             Keep me up to date on news and offers
             <input type="checkbox" name="keepUpdated">
-            <div class="news-and-events__form__label--checkbox__box"><img src="/images/svg/check.svg" alt="" class="checkbox-fieldset__label__check"></div>
+            <div class="news-and-events__form__label--checkbox__box"><img src="./images/svg/check.svg" alt="" class="checkbox-fieldset__label__check"></div>
           </label>
           <p class="news-and-events__form__note">For more information on how we process your data for marketing communication, check our <a href="#">Privacy policy</a>.</p>
         </form>
         <div class="news-and-events__socials">
-          <a class="centre button--filled" href="https://www.instagram.com/berserkeys/"><img src="/images/svg/instagramIcon.svg" alt="BerserKeys' Instagram"></a>
-          <a class="centre button--filled" href="https://www.tiktok.com/@berserkeys"><img src="/images/svg/tiktokIcon.svg" alt="BerserKeys' TikTok"></a>
-          <a class="centre button--filled" href="https://www.youtube.com/channel/UC74ViUwKE9yoXw4LH2ppmXA"><img src="/images/svg/youtubeIcon.svg" alt="BerserKeys' YouTube"></a>
-          <a class="centre button--filled" href="https://www.pinterest.com.au/Berserkeys"><img src="/images/svg/pinterestIcon.svg" alt="BerserKeys' Pinterest"></a>
+          <a class="centre button--filled" href="https://www.instagram.com/berserkeys/"><img src="./images/svg/instagramIcon.svg" alt="BerserKeys' Instagram"></a>
+          <a class="centre button--filled" href="https://www.tiktok.com/@berserkeys"><img src="./images/svg/tiktokIcon.svg" alt="BerserKeys' TikTok"></a>
+          <a class="centre button--filled" href="https://www.youtube.com/channel/UC74ViUwKE9yoXw4LH2ppmXA"><img src="./images/svg/youtubeIcon.svg" alt="BerserKeys' YouTube"></a>
+          <a class="centre button--filled" href="https://www.pinterest.com.au/Berserkeys"><img src="./images/svg/pinterestIcon.svg" alt="BerserKeys' Pinterest"></a>
         </div>
       </div>
     </section>

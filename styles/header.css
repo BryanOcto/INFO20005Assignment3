@@ -160,7 +160,7 @@ header nav::before, .search::before {
   grid-column: 1/2;
 }
 /* Trick from StackOverflow to resize size https://stackoverflow.com/questions/6668577/using-before-css-pseudo-element-to-add-image-to-modal/6668643#6668643 */
-.search__group__intro::before, .hero > div::after {
+.search__group__intro::before, .hero > div::after, .summary-last-remarks > div::after {
   content: '';
   position: absolute;
   display: block;

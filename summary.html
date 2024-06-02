@@ -353,20 +353,62 @@
       </div>
     </section>
   </header>
-  <main class="max-width">
-    <section class="summary-hero">
-      <h1>Order placed!</h1>
-      <p>A <span class="bold">receipt</span> and <span class="bold">tracking number</span> has been sent to your email.</p>
+  <main>
+    <section class="summary-hero centre--horizontal">
+      <div class="max-width max-width--smaller">
+        <h1>Order placed!</h1>
+        <p>A <span class="bold">receipt</span> and <span class="bold">tracking number</span> has been sent to your email.</p>
+      </div>
     </section>
 
-    <section class="total">
-      <h2>Order summary</h2>
-      <div class="total__sum-group"></div>
+    <section class="total centre--horizontal total--summary">
+      <div class="max-width max-width--smaller">
+        <h2>Order summary</h2>
+        <div class="total__sum-group" id="ttc-price">
+          <div class="total__sum-group-wrapper">
+            <p class="total__sum-group__name">TTC Bluish White</p>
+            <p><span></span>x</p>
+          </div>
+          <p class="prices__original-price--non-discounted">AU$<span></span></p>
+        </div>
+        <div class="total__sum-group" id="leobog-price">
+          <div class="total__sum-group-wrapper">
+            <p class="total__sum-group__name">Leobog Juggle V2</p>
+            <p><span></span>x</p>
+          </div>
+          <p class="prices__original-price--non-discounted">AU$<span></span></p>
+        </div>
+        <div class="total__sum-group" id="originalSubtotal">
+          <p class="total__sum-group__name">Subtotal</p>
+          <p class="prices__original-price--non-discounted">AU$<span></span></p>
+        </div>
+        <div class="total__sum-group" id="discountedSubtotal">
+          <p class="total__sum-group__name">Subtotal after discount</p>
+          <div class="total__sum-group__prices">
+            <p class="prices__discount">-5%</p>
+            <p class="prices__discounted-price">AU$<span class="bold"></span></p>
+          </div>
+        </div>
+        <div class="total__sum-group" id="shipping">
+          <p class="total__sum-group__name">Shipping</p>
+          <p class="prices__original-price--non-discounted"><span>TBC</span><span></span></p>
+        </div>
+        <div class="total__sum-group total__sum-group--total-price" id="totalPrice">
+          <p class="total__sum-group__name">Total</p>
+          <p class="total__sum-group__total-price">AU$<span class="bold"></span></p>
+        </div>
+        <div class="total__product-pictures">
+          <div class="total__product-pictures__img"></div>
+          <div class="total__product-pictures__img"></div>
+        </div>
+      </div>
     </section>
 
-    <section class="hero">
-      <p>Thank you for your order!</p>
-      <p>Now you will soon be able to easily <span class="bold">GO BERSERK</span> for the things you love when you need to!</p>
+    <section class="summary-last-remarks">
+      <div class="max-width max-width--smaller">
+        <p>Thank you for your order!</p>
+        <p>Now you will soon be able to easily <span class="bold">GO BERSERK</span> for the things you love when you need to!</p>
+      </div>
     </section>
   </main>
   <script type="text/javascript" src="../scripts/lengths.js"></script>

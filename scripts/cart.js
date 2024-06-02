@@ -220,6 +220,7 @@ function updateDiscountElements() {
     originalSubtotalLabel.innerHTML = "Subtotal";
     originalSubtotalPriceP.classList.remove("prices__original-price");
     discountedSubtotalGroup.classList.add("hidden");
+    updateTotals();
   } else {
     // The coupon is turned on
     applyCouponButton.setAttribute("disabled", "");
@@ -229,6 +230,7 @@ function updateDiscountElements() {
     originalSubtotalLabel.innerHTML = "Subtotal before discount";
     originalSubtotalPriceP.classList.add("prices__original-price");
     discountedSubtotalGroup.classList.remove("hidden");
+    updateTotals();
   }
 }
 
@@ -263,18 +265,30 @@ const shippingCost = 20;
 function updateTotalsCheckout() {
   const subtotal = sessionStorage.getItem("subtotal");
   let runningTotal = Number(subtotal);
-  const originalPriceSpan = document.querySelector(".total :first-child :last-child span");
+  let originalPriceSpan;
+  if (document.URL.includes("summary.html")) {
+    originalPriceSpan = document.querySelector("#originalSubtotal :last-child span");
+  } else {
+    originalPriceSpan = document.querySelector(".total > div :first-child :last-child span");
+  }
   originalPriceSpan.innerHTML = subtotal;
 
   // If discount is applied, also update that span too.
   if (sessionStorage.getItem("couponApplied") != null && sessionStorage.getItem("couponApplied") == "true") {
     const subtotalAfterDiscount = sessionStorage.getItem("subtotalAfterDiscount");
     runningTotal = Number(subtotalAfterDiscount);
-    const discountedPriceSpan = document.querySelector(".total :nth-child(2) :last-child :last-child span");
+    const discountedPriceSpan = document.querySelector("#discountedSubtotal :last-child :last-child span");
     discountedPriceSpan.innerHTML = subtotalAfterDiscount;
+  } else {
+    document.querySelector("#discountedSubtotal").classList.add("hidden");
   }
 
-  const shippingContainer = document.querySelector(".total :nth-child(3) :last-child");
+  let shippingContainer;
+  if (document.URL.includes("summary.html")) {
+    shippingContainer = document.querySelector("#shipping :last-child");
+  } else {
+    shippingContainer = document.querySelector(".total :nth-child(3) :last-child");
+  }
   const shippingLabel = shippingContainer.children[0];
   const shippingPrice = shippingContainer.children[1];
   if (sessionStorage.getItem("shippingCalculated") == "false") {
@@ -285,7 +299,12 @@ function updateTotalsCheckout() {
     shippingLabel.innerHTML = "AU$";
     shippingPrice.innerHTML = shippingCost;
   }
-  const totalPriceSpan = document.querySelector(".total :nth-child(4) :last-child span");
+  let totalPriceSpan;
+  if (document.URL.includes("summary.html")) {
+    totalPriceSpan = document.querySelector("#totalPrice :last-child span");
+  } else {
+    totalPriceSpan = document.querySelector(".total :nth-child(4) :last-child span");
+  }
   totalPriceSpan.innerHTML = runningTotal.toFixed(2);
 }
 
@@ -356,5 +375,36 @@ if (document.URL.includes("checkout.html")) {
   updateMainMarginBottom();
   updateTotalsCheckout();
   addFormEventListeners();
+}
+
+function setDetailsAndImage() {
+  if (sessionStorage.getItem(productNames[0]) != null) {
+    const productObject = JSON.parse(sessionStorage.getItem(productNames[0]));
+
+    const TTCNumItemsSpan = document.querySelector("#ttc-price .total__sum-group-wrapper :last-child span");
+    const TTCTotalPriceSpan = document.querySelector("#ttc-price .prices__original-price--non-discounted span");
+    TTCNumItemsSpan.innerHTML = productObject.numInCart;
+    TTCTotalPriceSpan.innerHTML = (Number(productObject.numInCart) * Number(productObject.price)).toFixed(2);
+  } else {
+    document.querySelector("#ttc-price").classList.add("hidden");
+    document.querySelector(".total__product-pictures__img:first-child").classList.add("hidden");
+  }
+  if (sessionStorage.getItem(productNames[1]) != null) {
+    const productObject = JSON.parse(sessionStorage.getItem(productNames[0]));
+
+    const LeobogNumItemsSpan = document.querySelector("#leobog-price .total__sum-group-wrapper :last-child span");
+    const LeobogTotalPriceSpan = document.querySelector("#leobog-price .prices__original-price--non-discounted span");
+
+    LeobogNumItemsSpan.innerHTML = productObject.numInCart;
+    LeobogTotalPriceSpan.innerHTML = (Number(productObject.numInCart) * Number(productObject.price)).toFixed(2);
+  } else {
+    document.querySelector("#leobog-price").classList.add("hidden");
+    document.querySelector(".total__product-pictures__img:last-child").classList.add("hidden");
+  }
+}
+
+if (document.URL.includes("summary.html")) {
+  updateTotalsCheckout();
+  setDetailsAndImage();
 }
 

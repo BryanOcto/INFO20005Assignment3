@@ -62,6 +62,9 @@
 .max-width--large {
   max-width: calc(var(--max-width) + 4 * var(--space-xxl));
 }
+.max-width--smaller {
+  max-width: 40rem;
+}
 
 /* Information for screenreaders only 
   copy-pased from https://css-tricks.com/inclusively-hidden/ */

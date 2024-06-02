@@ -54,6 +54,9 @@ button {
   padding-block: 0;
   padding-inline: 0;
 }
+button[disabled] {
+  cursor: unset;
+}
 .button--filled {
   background-color: var(--colour-secondary--medium-contrast);
 }
@@ -186,6 +189,7 @@ input[type="checkbox" i]:focus + .checkbox-fieldset__label__box {
 
 .form-submit {
   border: none;
+  cursor: pointer;
 }
 
 /* Option */

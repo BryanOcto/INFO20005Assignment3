@@ -54,7 +54,7 @@ p, a, input, li, legend, label, button, select, .product-card--out-of-stock .pro
   font-weight: var(--body-regular-weight);
   font-size: var(--text-body-size);
 }
-h1, h2, h3, h3 > a {
+h1, h2, h3, h3 > a, .summary-last-remarks p:first-child {
   font-family: var(--heading-font-family);
   font-weight: var(--heading-weight);
 }

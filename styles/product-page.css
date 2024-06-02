@@ -220,13 +220,14 @@ section#specification > div ul {
     flex-direction: column;
     margin-top: var(--space-md);
     justify-content: flex-start;
+    align-content: space-between;
     gap: var(--space-md);
   }
   section#specification.specification--ttc .content-wrapper {
-    height: 20rem;
+    height: 22rem;
   }
   section#specification.specification--leobog .content-wrapper {
-    height: 21rem;
+    height: 23rem;
   }
   .content-wrapper picture {
     order: -1;

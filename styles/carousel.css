@@ -130,7 +130,7 @@
 .product-card--dark .product-card__text-wrapper__info h3 {
   color: var(--colour-secondary--light);
 }
-.product-card__text-wrapper__prices, .product-info__prices {
+.product-card__text-wrapper__prices, .prices {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -140,7 +140,7 @@
   /* Thanks https://stackoverflow.com/questions/49658425/flexbox-justify-self-flex-end-not-working */
   margin-left: auto;
 }
-.product-card__text-wrapper__prices p, .product-info__prices p {
+.product-card__text-wrapper__prices p, .prices p, .total__sum-group__prices p, .prices__original-price, .prices__original-price--non-discounted {
   font-style: italic;
   text-align: right;
   width: min-content;
@@ -148,22 +148,22 @@
 .product-card--dark .product-card__text-wrapper__info ul {
   color: var(--white);
 }
-.product-card__text-wrapper__prices p:not(:last-child), .product-info__prices p:not(:last-child) {
+.product-card__text-wrapper__prices p:not(:last-child), .prices p:not(:last-child), .total__sum-group__prices p, .prices__group p {
   padding: var(--space-sm-xs) var(--space-xs);
 }
-.product-card__text-wrapper__prices__discount, .product-info__prices__discount {
+.product-card__text-wrapper__prices__discount, .prices__discount {
   background-color: var(--colour-tertiary--medium-contrast);
   color: var(--colour-tertiary--light);
 }
-.product-card__text-wrapper__prices__discounted-price, .product-info__prices__discounted-price {
+.product-card__text-wrapper__prices__discounted-price, .prices__discounted-price {
   background-color: var(--colour-tertiary--light);
   color: var(--colour-tertiary--dark);
 }
-.product-card__text-wrapper__prices__original-price, .product-info__prices__original-price {
+.product-card__text-wrapper__prices__original-price, .prices__original-price {
   color: var(--grey);
   text-decoration: line-through;
 }
-.product-card__text-wrapper__prices__original-price--non-discounted, .product-info__prices__original-price--non-discounted {
+.product-card__text-wrapper__prices__original-price--non-discounted, .prices__original-price--non-discounted {
   color: var(--black);
   background-color: unset;
   text-decoration: none;

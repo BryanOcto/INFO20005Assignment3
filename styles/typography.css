@@ -54,7 +54,7 @@ p, a, input, li, legend, label, button, .product-card--out-of-stock .product-car
   font-weight: var(--body-regular-weight);
   font-size: var(--text-body-size);
 }
-h1, h2, h3 {
+h1, h2, h3, h3 > a {
   font-family: var(--heading-font-family);
   font-weight: var(--heading-weight);
 }
@@ -62,9 +62,12 @@ h1, h2 {
   font-size: var(--text-heading-size);
   color: var(--colour-primary--dark);
 }
-h3, .product-info__info > h1 {
+h3, h3 > a, .product-info__info > h1 {
   font-size: var(--text-subheading-size);
   color: var(--colour-secondary--dark);
+}
+h3 > a:focus, h3 > a:hover {
+  text-decoration: underline;
 }
 
 .bold {

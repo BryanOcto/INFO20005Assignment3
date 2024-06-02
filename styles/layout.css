@@ -59,6 +59,9 @@
 .max-width--larger {
   max-width: calc(var(--max-width) + 2 * 3.75rem);
 }
+.max-width--large {
+  max-width: calc(var(--max-width) + 4 * var(--space-xxl));
+}
 
 /* Information for screenreaders only 
   copy-pased from https://css-tricks.com/inclusively-hidden/ */

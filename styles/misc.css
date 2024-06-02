@@ -56,12 +56,17 @@ button {
 .button--filled {
   background-color: var(--colour-secondary--medium-contrast);
 }
-.button--primary {
+.button--primary, .button--filled--text {
   display: inline-block;
-  background-color: var(--colour-secondary);
-  color: var(--colour-secondary--dark);
   font-weight: var(--body-bold-weight);
   padding: var(--space-sm-md) var(--space-lg-xl);
+}
+.button--primary {
+  background-color: var(--colour-secondary);
+  color: var(--colour-secondary--dark);
+}
+.button--filled--text {
+  color: var(--white);
 }
 
 /* Input */

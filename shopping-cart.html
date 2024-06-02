@@ -5,6 +5,441 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
   <title>Shopping Cart | BerserKeys</title>
+
+  <link rel="icon" href="../images/raster/BerkserKeys-Logo--favicon.jpg">
+
+  <link rel="stylesheet" href="../styles/reset.css">
+  <link rel="stylesheet" href="../styles/colours.css">
+  <link rel="stylesheet" href="../styles/typography.css">
+  <link rel="stylesheet" href="../styles/misc.css">
+  <link rel="stylesheet" href="../styles/layout.css">
+  <link rel="stylesheet" href="../styles/header.css">
+  <link rel="stylesheet" href="../styles/carousel.css">
+  <link rel="stylesheet" href="../styles/home.css">
+  <link rel="stylesheet" href="../styles/product-page.css">
+  <link rel="stylesheet" href="../styles/cart.css">
+
+  <!-- Sources for assets used throughout the website: -->
+  <!-- Icons sourced from Google Font's icons: Material Symbols -->
+  <!-- Social media icons from Feather and SVG Repo -->
+  <!-- Pattern from https://pattern.monster/squares-and-plus-2/ -->
+  <!-- Illustrations, images and favicon from BerserKeys -->
+  <!-- THIS WEBSITE IS NOT AFFILIATED WITH BERSERKEYS AND ONLY MADE FOR THE PURPOSES OF A UNIVERSITY SUBJECT -->
+</head>
+<body class="body--shopping-cart">
+  <header>
+    <nav class="cluster nav--hidden">
+      <a href="../index.html" class="nav__logo"><img src="../images/raster/BerserKeys-Logo--square.jpg" alt="BerserKeys logo; Home page"></a>
+      <ul class="nav__link-list hidden">
+        <li><a href="#">Products</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Offers</a></li>
+        <li><a href="#">Coming Soon</a></li>
+      </ul>
+      <div class="cluster">
+        <a href="#" class="centre nav__icon-group__icon"><img src="../images/svg/accountCircle.svg" alt="Account page"></a>
+        <button class="centre nav__icon-group__icon" onclick="openSearch()"><img src="../images/svg/search.svg" alt="Search menu"></button>
+        <a href="../shopping-cart.html" class="centre nav__icon-group__icon"><img src="../images/svg/shoppingCart.svg" alt="Shopping cart"></a>
+        <button class="centre button--filled nav__icon-group__icon nav__open-button" id="openButton" onclick="toggleMenu()"><img src="../images/svg/arrowUp.svg" alt="Open mobile navigation menu"></button>
+      </div>
+    </nav>
+    <section class="centre search hidden" role="search">
+      <!-- In desktop, removed logo home button and kept mobile aesthetic to close search because it made more sense to code and doesn't significantly hamper UI/UX. Increases consistency too. -->
+      <div class="cluster max-width">
+        <input class="search__input" type="search" name="search" placeholder="e.g. switches, AULA F68, ...">
+        <button class="button--filled search__close" onclick="closeSearch()"><img src="../images/svg/close.svg" alt="Close search menu"></button>
+      </div>
+      <div class="search__group centre--horizontal">
+        <div class="search__group__intro max-width">
+          <h2>What are you looking for?</h2>
+          <p>Examples of what you could look up:</p>
+          <ul>
+            <li>Product categories</li>
+            <li>Products</li>
+            <li>Blog articles</li>
+          </ul>
+        </div>
+        <div class="search__group__results hidden">
+          <div class="categories-blog">
+            <h2>Categories</h2>
+            <div class="categories-blog__categories-wrapper">
+              <button class="categories-blog__categories-wrapper__toggle" ><img src="../images/svg/arrowDown--dark.svg" alt="Expand search results for categories"></button>
+              <a href="#" class="category-card">
+                <!-- alt left empty for category images since they are decorative. -->
+                <picture>
+                  <img src="../images/raster/switchesCategory.png" alt="">
+                </picture>
+                <div class="category-card__text-wrapper">
+                  <h3>Switches</h3>
+                  <p>Our collection of switches for mechanical keyboards.</p>
+                </div>
+              </a>
+              <a href="#" class="category-card">
+                <!-- alt left empty for category images since they are decorative. -->
+                <picture>
+                  <img src="../images/raster/switchesCategory.png" alt="">
+                </picture>
+                <div class="category-card__text-wrapper">
+                  <h3>Switches</h3>
+                  <p>Our collection of switches for mechanical keyboards.</p>
+                </div>
+              </a>
+              <a href="#" class="category-card">
+                <!-- alt left empty for category images since they are decorative. -->
+                <picture>
+                  <img src="../images/raster/switchesCategory.png" alt="">
+                </picture>
+                <div class="category-card__text-wrapper">
+                  <h3>Switches</h3>
+                  <p>Our collection of switches for mechanical keyboards.</p>
+                </div>
+              </a>
+              <a href="#" class="category-card">
+                <!-- alt left empty for category images since they are decorative. -->
+                <picture>
+                  <img src="../images/raster/switchesCategory.png" alt="">
+                </picture>
+                <div class="category-card__text-wrapper">
+                  <h3>Switches</h3>
+                  <p>Our collection of switches for mechanical keyboards.</p>
+                </div>
+              </a>
+            </div>
+            <h2>Blog</h2>
+            <div class="categories-blog__blog-wrapper">
+              <button class="categories-blog__blog-wrapper__toggle" ><img src="../images/svg/arrowDown--dark.svg" alt="Expand search results for categories"></button>
+              <a href="#" class="blog-card">
+                <picture>
+                  <img src="../images/raster/blogImage.png" alt="">
+                </picture>
+                <div class="blog-card__text-wrapper">
+                  <h3>Comparing types of mechanical keyboard switches</h3>
+                  <p>by Martin Zhang | 25/10/2023</p>
+                </div>
+              </a>
+              <a href="#" class="blog-card">
+                <picture>
+                  <img src="../images/raster/blogImage.png" alt="">
+                </picture>
+                <div class="blog-card__text-wrapper">
+                  <h3>Slightly shorter title</h3>
+                  <p>by Martin Zhang | 25/10/2023</p>
+                </div>
+              </a>
+              <a href="#" class="blog-card">
+                <picture>
+                  <img src="../images/raster/blogImage.png" alt="">
+                </picture>
+                <div class="blog-card__text-wrapper">
+                  <h3>Comparing types of mechanical keyboard switches</h3>
+                  <p>by Martin Zhang | 25/10/2023</p>
+                </div>
+              </a>
+              <a href="#" class="blog-card">
+                <picture>
+                  <img src="../images/raster/blogImage.png" alt="">
+                </picture>
+                <div class="blog-card__text-wrapper">
+                  <h3>Comparing types of mechanical keyboard switches</h3>
+                  <p>by Martin Zhang | 25/10/2023</p>
+                </div>
+              </a>
+              <a href="#" class="blog-card">
+                <picture>
+                  <img src="../images/raster/blogImage.png" alt="">
+                </picture>
+                <div class="blog-card__text-wrapper">
+                  <h3>Comparing types of mechanical keyboard switches; slightly longer title</h3>
+                  <p>by Martin Zhang | 25/10/2023</p>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="products max-width">
+            <h2>Products</h2>
+            <div class="carousel carousel--light" data-current-position="1" data-is-in-transition="false">
+              <button class="centre button--filled carousel__toggle" onclick="moveLeft(this.parentElement, this, this.nextElementSibling)" disabled><img src="../images/svg/arrowLeft.svg" alt="Scroll carousel to the left"></button>
+              <button class="centre button--filled carousel__toggle" onclick="moveRight(this.parentElement, this.previousElementSibling, this)"><img src="../images/svg/arrowRight.svg" alt="Scroll carousel to the right"></button>
+              <div class="carousel__card-mask">
+                <div class="carousel__card-mask__card-container">
+                  <a href="/products/TTCBluishWhite.html" class="product-card product-card--light" data-filtered="false">
+                    <picture class="product-card__picture">
+                      <img src="../images/raster/TTCBluishWhite1.webp" alt="TTC Bluish White Product Image Preview">
+                    </picture>
+                    <div class="product-card__text-wrapper">
+                      <div class="product-card__text-wrapper__info">
+                        <h3>TTC Bluish White</h3>
+                        <ul>
+                          <li>Tactile Switches</li>
+                          <li>42gf</li>
+                          <li>10pcs</li>
+                        </ul>
+                      </div>
+                      <div class="product-card__text-wrapper__prices">
+                        <!-- Screen-reader friendly approach from https://stackoverflow.com/questions/54094703/how-to-express-multiple-prices-for-screen-readers -->
+                        <p class="product-card__text-wrapper__prices__discount"><span class="sr-only">Discount: </span>-14.6%</p>
+                        <p class="product-card__text-wrapper__prices__discounted-price"><span class="sr-only">Discounted price price: </span>AU$<br><span class="bold">6.39</span></p>
+                        <p class="product-card__text-wrapper__prices__original-price"><span class="sr-only">Original price: </span>AU$<br>7.49</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="#" class="product-card product-card--light" data-filtered="false">
+                    <picture class="product-card__picture">
+                      <img src="../images/raster/TTCFlamingPurple1.png" alt="TTC Flaming Purple Product Image Preview">
+                    </picture>
+                    <div class="product-card__text-wrapper">
+                      <div class="product-card__text-wrapper__info">
+                        <h3>TTC Flaming Purple</h3>
+                        <ul>
+                          <li>Linear Switches</li>
+                          <li>42gf</li>
+                          <li>10pcs</li>
+                        </ul>
+                      </div>
+                      <div class="product-card__text-wrapper__prices">
+                        <!-- Screen-reader friendly approach from https://stackoverflow.com/questions/54094703/how-to-express-multiple-prices-for-screen-readers -->
+                        <p class="product-card__text-wrapper__prices__discount"><span class="sr-only">Discount: </span>-14.8%</p>
+                        <p class="product-card__text-wrapper__prices__discounted-price"><span class="sr-only">Discounted price price: </span>AU$<br><span class="bold">6.89</span></p>
+                        <p class="product-card__text-wrapper__prices__original-price"><span class="sr-only">Original price: </span>AU$<br>8.09</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="#" class="product-card product-card--light" data-filtered="true">
+                    <picture class="product-card__picture">
+                      <img src="../images/raster/PryzmaSeafoam1.png" alt="Pryzma Seafoam Product Image Preview">
+                    </picture>
+                    <div class="product-card__text-wrapper">
+                      <div class="product-card__text-wrapper__info">
+                        <h3>Pryzma Seafoam</h3>
+                        <ul>
+                          <li>Linear Switches</li>
+                          <li>63gf</li>
+                          <li>Hand Lubed</li>
+                          <li>36 pcs</li>
+                        </ul>
+                      </div>
+                      <div class="product-card__text-wrapper__prices">
+                        <!-- Screen-reader friendly approach from https://stackoverflow.com/questions/54094703/how-to-express-multiple-prices-for-screen-readers -->
+                        <p class="product-card__text-wrapper__prices__discount"><span class="sr-only">Discount: </span>-14.6%</p>
+                        <p class="product-card__text-wrapper__prices__discounted-price"><span class="sr-only">Discounted price price: </span>AU$<br><span class="bold">6.39</span></p>
+                        <p class="product-card__text-wrapper__prices__original-price"><span class="sr-only">Original price: </span>AU$<br>7.49</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="#" class="product-card product-card--light" data-filtered="false">
+                    <picture class="product-card__picture product-card__picture--contain">
+                      <img src="../images/raster/LeobogGraywoodV41.png" alt="Leobog Graywood V4 Product Image Preview">
+                    </picture>
+                    <div class="product-card__text-wrapper">
+                      <div class="product-card__text-wrapper__info">
+                        <h3>Leobog Graywood V4</h3>
+                        <ul>
+                          <li>Linear Switches</li>
+                          <li>40gf</li>
+                          <li>Factory Lubed</li>
+                          <li>100 pcs</li>
+                        </ul>
+                      </div>
+                      <div class="product-card__text-wrapper__prices">
+                        <!-- Screen-reader friendly approach from https://stackoverflow.com/questions/54094703/how-to-express-multiple-prices-for-screen-readers -->
+                        <p class="product-card__text-wrapper__prices__original-price product-card__text-wrapper__prices__original-price--non-discounted"><span class="sr-only">Price: </span>AU$<br><span class="bold">29.95</span></p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="#" class="product-card product-card--out-of-stock product-card--light" data-filtered="true">
+                    <picture class="product-card__picture product-card__picture--contain">
+                      <img src="../images/raster/LeobogNimbusV31.png" alt="Leobog Nimbus V3 Product Image Preview">
+                    </picture>
+                    <div class="product-card__text-wrapper">
+                      <div class="product-card__text-wrapper__info">
+                        <h3>Leobog Nimbus V3</h3>
+                        <ul>
+                          <li>Linear Switches</li>
+                          <li>40gf</li>
+                          <li>Factory Lubed</li>
+                          <li>35 pcs</li>
+                        </ul>
+                      </div>
+                      <div class="product-card__text-wrapper__prices">
+                        <!-- Screen-reader friendly approach from https://stackoverflow.com/questions/54094703/how-to-express-multiple-prices-for-screen-readers -->
+                        <p class="product-card__text-wrapper__prices__original-price product-card__text-wrapper__prices__original-price--non-discounted"><span class="sr-only">Price: </span>AU$<br><span class="bold">19.95</span></p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="products/LeobogJuggleV2.html" class="product-card product-card--light" data-filtered="false">
+                    <picture class="product-card__picture">
+                      <img src="../images/raster/LeobogJuggleV21.png" alt="Leobog Juggle V2 Product Image Preview">
+                    </picture>
+                    <div class="product-card__text-wrapper">
+                      <div class="product-card__text-wrapper__info">
+                        <h3>Leobog Juggle V2</h3>
+                        <ul>
+                          <li>Tactile Switches</li>
+                          <li>36gf</li>
+                          <li>Factory Lubed</li>
+                          <li>35 pcs</li>
+                        </ul>
+                      </div>
+                      <div class="product-card__text-wrapper__prices">
+                        <!-- Screen-reader friendly approach from https://stackoverflow.com/questions/54094703/how-to-express-multiple-prices-for-screen-readers -->
+                        <p class="product-card__text-wrapper__prices__original-price product-card__text-wrapper__prices__original-price--non-discounted"><span class="sr-only">Price: </span>AU$<br><span class="bold">19.95</span></p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="products__filters">
+              <h3>Filters</h3>
+              <fieldset class="price-fieldset">
+                <legend class="price-fieldset__legend">Price</legend>
+                <label class="price-fieldset__label">
+                  Minimum (AU$)
+                  <input type="number" name="minPrice" min="6.39" max="30.95" placeholder="$6.39">
+                </label>
+                <label class="price-fieldset__label">
+                  Maximum (AU$)
+                  <input type="number" name="maxPrice" min="6.39" max="30.95" placeholder="$30.95">
+                </label>
+              </fieldset>
+              <fieldset class="checkbox-fieldset">
+                <legend class="checkbox-fieldset__legend">Brand</legend>
+                <label class="checkbox-fieldset__label">
+                  TTC (2)
+                  <input type="checkbox" name="TTCIsSelected">
+                  <div class="checkbox-fieldset__label__box"><img src="../images/svg/check.svg" alt="" class="checkbox-fieldset__label__check"></div>
+                </label>
+                <label class="checkbox-fieldset__label">
+                  Aflion (0)
+                  <input type="checkbox" name="AflionIsSelected">
+                  <div class="checkbox-fieldset__label__box"><img src="../images/svg/check.svg" alt="" class="checkbox-fieldset__label__check"></div>
+                </label>
+                <label class="checkbox-fieldset__label">
+                  Pryzma (1)
+                  <input type="checkbox" name="PryzmaIsSelected">
+                  <div class="checkbox-fieldset__label__box"><img src="../images/svg/check.svg" alt="" class="checkbox-fieldset__label__check"></div>
+                </label>
+                <label class="checkbox-fieldset__label">
+                  BerserKeys (0)
+                  <input type="checkbox" name="BerserKeysIsSelected">
+                  <div class="checkbox-fieldset__label__box"><img src="../images/svg/check.svg" alt="" class="checkbox-fieldset__label__check"></div>
+                </label>
+                <label class="checkbox-fieldset__label">
+                  Leobog (3)
+                  <input type="checkbox" name="LeobogIsSelected">
+                  <div class="checkbox-fieldset__label__box"><img src="../images/svg/check.svg" alt="" class="checkbox-fieldset__label__check"></div>
+                </label>
+              </fieldset>
+              <fieldset class="checkbox-fieldset">
+                <legend class="checkbox-fieldset__legend">Availability</legend>
+                <label class="checkbox-fieldset__label">
+                  In stock (6)
+                  <input type="checkbox" name="inStockIsSelected">
+                  <div class="checkbox-fieldset__label__box"><img src="../images/svg/check.svg" alt="" class="checkbox-fieldset__label__check"></div>
+                </label>
+                <label class="checkbox-fieldset__label">
+                  Out of stock (0)
+                  <input type="checkbox" name="outOfStockSelected">
+                  <div class="checkbox-fieldset__label__box"><img src="../images/svg/check.svg" alt="" class="checkbox-fieldset__label__check"></div>
+                </label>
+              </fieldset>
+              <button class="button--primary product__filters__clear-filters" onclick="clearFilters()">Clear filters</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </header>
+  <main class="main--shopping-cart">
+    <h1 class="sr-only">Shopping cart</h1>
+    <section class="centre--horizontal section--dark-bg hero hero--shopping-cart">
+      <div class="max-width">
+        <h2 class="hero--shopping-cart__h2">Ready to buy?</h2>
+        <p>If you're new, don't forget to use the coupon below to get <span class="bold">AU$5 off</span> your entire order!</p>
+        <div class="coupon-buttons">
+          <button class="button--primary coupon-buttons__button" onclick="applyCoupon()">Apply coupon!</button>
+          <button class="button--filled button--filled--text coupon-buttons__button hidden" onclick="removeCoupon()">Remove coupon</button>
+        </div>
+      </div>
+    </section>
+    <section class="cart-and-total max-width max-width--large">
+      <section class="cart">
+        <div class="cart__is-empty stack hidden">
+          <h2 class="cart__is-empty__h2">Cart is empty!</h2>
+          <a class="button--primary" href="index.html">Shop for products</a>
+        </div>
+        <div data-product-name="TTC Bluish White" class="cart-product-card hidden">
+          <!-- Easier for CSS purposes and anyways this is mostly decorative and just to remind what the user has added to cart -->
+          <div class="cart-product-card__container">
+            <div class="cart-product-card__container__picture cart-product-card__container__picture--ttc"></div>
+            <div class="cart-product-card__container__info">
+              <h3><a href="/products/TTCBluishWhite.html">TTC Bluish White</a></h3>
+              <div class="cart-product-card__container__info__controls">
+                <div class="counter">
+                  <button class="centre button--filled counter__decrease" onclick="decreaseNumInCart(this.nextElementSibling.children[0])"><img src="../images/svg/remove.svg" alt="Decrease amount to add to cart"></button>
+                  <p class="counter__value"><span class="centre"></span></p>
+                  <button class="centre button--filled counter__increase" onclick="increaseNumInCart(this.previousElementSibling.children[0])"><img src="../images/svg/add.svg" alt="Increase amount to add to cart"></button>
+                </div>
+                <button class="remove-product centre"><img src="images/svg/delete.svg" alt="Remove product from shopping cart"></button>
+              </div>
+            </div>
+            <div class="prices">
+              <!-- Screen-reader friendly approach from https://stackoverflow.com/questions/54094703/how-to-express-multiple-prices-for-screen-readers -->
+              <div class="prices__group">
+                <p class="prices__discount"><span class="sr-only">Discount: </span>-14.6%</p>
+                <p class="prices__discounted-price"><span class="sr-only">Discounted price price: </span>AU$<span class="bold">6.39</span></p>
+              </div>
+              <p class="prices__original-price"><span class="sr-only">Original price: </span>AU$7.49</p>
+            </div>
+          </div>
+          <p class="cart-product-card__total">Total: AU$<span class="bold"></span></p>
+        </div>
+        <div data-product-name="Leobog Juggle V2" class="cart-product-card hidden">
+          <!-- Easier for CSS purposes and anyways this is mostly decorative and just to remind what the user has added to cart -->
+          <div class="cart-product-card__container">
+            <div class="cart-product-card__container__picture cart-product-card__container__picture--leobog"></div>
+            <div class="cart-product-card__container__info">
+              <h3><a href="/products/LeobogJuggleV2.html">Leobog Juggle V2</a></h3>
+              <div class="cart-product-card__container__info__controls">
+                <div class="counter">
+                  <button class="centre button--filled counter__decrease" onclick="decreaseNumInCart(this.nextElementSibling.children[0])"><img src="../images/svg/remove.svg" alt="Decrease amount to add to cart"></button>
+                  <p class="counter__value"><span class="centre"></span></p>
+                  <button class="centre button--filled counter__increase" onclick="increaseNumInCart(this.previousElementSibling.children[0])"><img src="../images/svg/add.svg" alt="Increase amount to add to cart"></button>
+                </div>
+                <button class="remove-product centre"><img src="images/svg/delete.svg" alt="Remove product from shopping cart"></button>
+              </div>
+            </div>
+            <div class="prices">
+              <!-- Screen-reader friendly approach from https://stackoverflow.com/questions/54094703/how-to-express-multiple-prices-for-screen-readers -->
+              <p class="prices__original-price prices__original-price--non-discounted"><span class="sr-only">Price: </span>AU$19.95</p>
+            </div>
+          </div>
+          <p class="cart-product-card__total">Total: AU$<span class="bold"></span></p>
+        </div>
+      </section>
+      <section class="total">
+        <div class="total__sum-group">
+          <p class="total__sum-group__name">Subtotal</p>
+          <p class="prices__original-price--non-discounted">AU$<span>error</span></p>
+        </div>
+        <div class="total__sum-group">
+          <p class="total__sum-group__name">Subtotal after discount</p>
+          <div class="total__sum-group__prices">
+            <p class="prices__discount">-5%</p>
+            <p class="prices__discounted-price">AU$<span class="bold">error</span></p>
+          </div>
+        </div>
+        <button class="button--primary" disabled>Checkout</button>
+      </section>
+    </section>
+  </main>
+  <script type="text/javascript" src="../scripts/lengths.js"></script>
+  <script type="text/javascript" src="../scripts/header.js"></script>
+  <script type="text/javascript" src="../scripts/carousel.js"></script>
+  <script type="text/javascript" src="../scripts/resize.js"></script>
+  <script type="text/javascript" src="../scripts/filter.js"></script>
+  <script type="text/javascript" src="../scripts/cart.js"></script>
 </head>
 <body>
   

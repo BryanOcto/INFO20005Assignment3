@@ -168,7 +168,7 @@ header nav::before, .search::before {
   top: 5%;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url("/images/raster/vikingCharacter1--no-bg.png");
+  background-image: url("./images/raster/vikingCharacter1--no-bg.png");
   width: 40%;
   /* Account for that top: 5% */
   height: 95%; 

@@ -66,10 +66,10 @@
   background-position: center;
 }
 .cart-product-card__container__picture--ttc {
-  background-image: url("/images/raster/TTCBluishWhite1.webp");
+  background-image: url("./images/raster/TTCBluishWhite1.webp");
 }
 .cart-product-card__container__picture--leobog {
-  background-image: url("/images/raster/LeobogJuggleV21.png");
+  background-image: url("./images/raster/LeobogJuggleV21.png");
 }
 .cart-product-card__container__info {
   display: flex;

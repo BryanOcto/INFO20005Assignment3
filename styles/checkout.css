@@ -1,0 +1,92 @@
+.form-wrapper {
+  padding: 0;
+}
+.form-wrapper > * {
+  margin-left: auto;
+  margin-right: auto;
+}
+.form-wrapper__hero > div {
+  padding: var(--section-padding);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.form-wrapper__hero {
+  background: var(--bg-gradient--dark);
+}
+.form-wrapper__hero__title {
+  color: var(--colour-primary--light);
+  padding-top: 0;
+}
+.form-wrapper__hero__subtitle {
+  color: var(--white);
+}
+.form-wrapper__form {
+  padding: var(--space-lg) var(--section-padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+.form-wrapper__hero__decorative-img {
+  width: var(--button-size);
+  height: var(--button-size);
+  opacity: 0.5;
+}
+
+.total > div > * {
+  width: 100%;
+}
+.total__sum-group--total-price {
+  flex-wrap: wrap;
+}
+.total__sum-group--total-price::before {
+  content: "";
+  width: 100%;
+  height: var(--border-width--small);
+  background-color: var(--black);
+  margin: var(--space-sm) 0;
+}
+.total__sum-group__total-price {
+  background-color: var(--colour-secondary--light);
+  color: var(--colour-secondary--dark);
+}
+
+/* DESKTOP */
+@media (min-width: 50em) {
+  .total.centre--horizontal {
+    box-shadow: var(--standard-up-shadow);
+    position: fixed;
+    bottom: 0;
+  }
+}
+@media (min-width: 85em) {
+  #form {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    height: calc(100vh - var(--button-size) - 2.5 * var(--space-xs));
+  }
+  #form > section:not(:last-child) {
+    overflow-y: scroll;
+  }
+  #form > section:last-child {
+    width: calc((1 / (1.2 + 1)) * 100% - var(--border-width));
+    right: 0;
+  }
+  #form > section:nth-child(2) {
+    position: relative;
+    overflow-y: visible;
+  }
+  #form > section:nth-child(2)::before {
+    position: absolute;
+    content: "";
+    height: calc(100vh - var(--button-size) - 2.5 * var(--space-xs));
+    width: var(--border-width);
+    background-color: var(--colour-primary--dark);
+    left: 0;
+    translate: translateX(-50%);
+  }
+  #form > section > :first-child {
+    position: sticky;
+    top: 0;
+  }
+}

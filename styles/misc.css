@@ -19,6 +19,7 @@
   --thinner-border: var(--border-width--small) solid var(--black);
   --focus-border: var(--border-width--focus) solid var(--colour-primary--medium-contrast);
   --focus-border--light: var(--border-width--focus) solid var(--colour-primary--light);
+  --invalid-border: var(--border-width--focus) solid var(--colour-tertiary--medium-contrast);
   --focus-border--thinner: var(--border-width--focus--small) solid var(--colour-primary--medium-contrast);
   --card-border--light-bg: var(--border-width) solid var(--black--translucent--10);
   --card-border--dark-bg: var(--border-width) solid var(--white--translucent--10);
@@ -69,8 +70,19 @@ button {
   color: var(--white);
 }
 
+/* FORMS */
+.required::after {
+  /* Solution from https://stackoverflow.com/questions/11197671/use-css-to-automatically-add-required-field-asterisk-to-form-inputs */
+  content: " *";
+  color: var(--colour-tertiary--medium-contrast);
+  font-style: normal;
+}
+.optional::after {
+  content: " (optional)";
+  font-style: italic;
+}
 /* Input */
-input {
+input, .option-label select {
   padding: var(--space-sm-md) var(--space-md);
   border: var(--standard-border);
   background-color: var(--white);
@@ -86,6 +98,9 @@ input {
 .button--filled:focus {
   border: var(--focus-border--light);
 }
+.form-element--required:invalid {
+  border: var(--invalid-border) !important;
+}
 input[type="checkbox" i] {
   margin: 0;
   margin-right: var(--space-xs);
@@ -98,6 +113,82 @@ label {
 input[type="checkbox" i]:focus + .checkbox-fieldset__label__box {
   border: var(--focus-border--thinner);
 }
+
+.double-input-fieldset, .checkbox-fieldset {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: var(--space-sm);
+}
+.double-input-fieldset--stack {
+  grid-template-columns: 1fr;
+}
+.double-input-fieldset--stack label:not(:first-of-type) {
+  margin-top: var(--space-sm);
+}
+.checkbox-fieldset {
+  grid-row-gap: var(--space-xs);
+}
+.single-input-label {
+  display: flex;
+  flex-direction: column;
+}
+
+.double-input-fieldset__label {
+  font-style: italic;
+  width: 100%;
+}
+.double-input-fieldset__label--no-legend {
+  font-style: normal;
+}
+.double-input-fieldset__label input, .option-label select, .single-input-label input {
+  width: 100%;
+  margin-top: var(--space-xs);
+}
+
+.double-input-fieldset__legend, .checkbox-fieldset__legend {
+  grid-column: 1 / span 2;
+  margin-bottom: var(--space-xs);
+}
+.checkbox-fieldset__label, .news-and-events__form__label--checkbox {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+.checkbox-fieldset__label__box, .news-and-events__form__label--checkbox__box {
+  display: block;
+  width: var(--text-body-size--large);
+  height: var(--text-body-size--large);
+  border: var(--thinner-border);
+  background-color: var(--white);
+  flex-shrink: 0;
+} 
+.news-and-events__form__label--checkbox__box {
+  border: none;
+}
+.checkbox-fieldset__label__box img, .news-and-events__form__label--checkbox__box img {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.checkbox-fieldset__label input:checked + .checkbox-fieldset__label__box img, .news-and-events__form__label--checkbox input:checked + .news-and-events__form__label--checkbox__box img {
+  opacity: 1;
+}
+.checkbox-fieldset__label input, .news-and-events__form__label--checkbox input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.fieldset--with-legend legend {
+  margin-bottom: var(--space-xs);
+}
+
+.form-submit {
+  border: none;
+}
+
+/* Option */
 
 /* tmp */
 /* main img {

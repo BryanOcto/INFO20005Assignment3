@@ -37,7 +37,7 @@
   display: block;
   width: 11rem;
 }
-.coupon-buttons__button[disabled], .total button[disabled] {
+.coupon-buttons__button[disabled], .total button[disabled], input[disabled][type="submit"] {
   background-color: var(--colour-secondary--dark);
   color: var(--white);
 }
@@ -112,10 +112,10 @@
 .total > * {
   width: 100%;
 }
-.total > *:not(:last-child) {
+.total > *:not(:last-child), .total.centre--horizontal > div > *:not(:last-child) {
   margin-bottom: var(--space-xs);
 }
-.total > button {
+.total > button, .total.centre--horizontal > div > input[type="submit"] {
   margin-top: var(--space-sm);
 }
 .total__sum-group {

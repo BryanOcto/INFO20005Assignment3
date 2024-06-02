@@ -146,11 +146,22 @@ function removeProduct(productCard, productName) {
 // Button height is in pixels as seen in header.css
 const buttonHeight = 70;
 function updateMainMarginBottom() {
+  const main = document.getElementsByTagName("main")[0];
+  const totalSection = document.querySelector(".total");
   if (window.innerWidth >= desktopSmallWidth) {
+    if (document.URL.includes("checkout.html")) {
+      if (window.innerWidth < desktopWidth) {
+        main.style.marginBottom = `${totalSection.offsetHeight}px`;
+      } else {
+        main.style.marginBottom = "0";
+        const paymentSection = document.querySelector("#form > section:nth-child(2)");
+        paymentSection.style.marginBottom = `${totalSection.offsetHeight}px`;
+      }
+    } else {
+      main.style.marginBottom = "0";
+    }
     return;
   }
-  const main = document.getElementsByClassName("main--shopping-cart")[0];
-  const totalSection = document.getElementsByClassName("total")[0];
   main.style.marginBottom = `${buttonHeight + totalSection.offsetHeight}px`;
 }
 
@@ -247,3 +258,103 @@ if (document.URL.includes("shopping-cart.html")) {
   updateTotals();
   checkoutAddEventListener();
 }
+
+const shippingCost = 20;
+function updateTotalsCheckout() {
+  const subtotal = sessionStorage.getItem("subtotal");
+  let runningTotal = Number(subtotal);
+  const originalPriceSpan = document.querySelector(".total :first-child :last-child span");
+  originalPriceSpan.innerHTML = subtotal;
+
+  // If discount is applied, also update that span too.
+  if (sessionStorage.getItem("couponApplied") != null && sessionStorage.getItem("couponApplied") == "true") {
+    const subtotalAfterDiscount = sessionStorage.getItem("subtotalAfterDiscount");
+    runningTotal = Number(subtotalAfterDiscount);
+    const discountedPriceSpan = document.querySelector(".total :nth-child(2) :last-child :last-child span");
+    discountedPriceSpan.innerHTML = subtotalAfterDiscount;
+  }
+
+  const shippingContainer = document.querySelector(".total :nth-child(3) :last-child");
+  const shippingLabel = shippingContainer.children[0];
+  const shippingPrice = shippingContainer.children[1];
+  if (sessionStorage.getItem("shippingCalculated") == "false") {
+    shippingLabel.innerHTML = "TBC";
+    shippingPrice.innerHTML = "";
+  } else {
+    runningTotal += shippingCost;
+    shippingLabel.innerHTML = "AU$";
+    shippingPrice.innerHTML = shippingCost;
+  }
+  const totalPriceSpan = document.querySelector(".total :nth-child(4) :last-child span");
+  totalPriceSpan.innerHTML = runningTotal.toFixed(2);
+}
+
+// Inspired from https://stackoverflow.com/questions/57087145/check-if-all-required-fields-are-filled-in-a-specific-div
+function addFormEventListeners() {
+  const requiredFormElements = document.querySelectorAll("[required]");
+  for (let formElement of requiredFormElements) {
+    formElement.addEventListener("input", handleAllFilled);
+  }
+
+  const submitButton = document.getElementsByClassName("form-submit")[0];
+  submitButton.addEventListener("click", addInvalidClasses);
+  
+  // Thanks https://stackoverflow.com/questions/39509415/route-to-another-page-onsubmit
+  const form = document.getElementById("form");
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    location.href = "summary.html";
+  });
+}
+
+
+function handleAllFilled() {
+  const requiredFormElements = document.querySelectorAll("[required]");
+  let allRequiredFormElementsFilled = true;
+  for (let formElement of requiredFormElements) {
+    if (formElement.type == "checkbox" && !formElement.checked) {
+      allRequiredFormElementsFilled = false;
+    } else if ((formElement.type == "text" || formElement.type == "number" || formElement.type == "email") && !formElement.value) {
+      allRequiredFormElementsFilled = false;
+    }
+  }
+
+  const submitButton = document.getElementsByClassName("form-submit")[0];
+  if (allRequiredFormElementsFilled) {
+    submitButton.removeAttribute("disabled");
+    submitButton.setAttribute("value", "Place Order!");
+  } else {
+    submitButton.setAttribute("disabled", "");
+    submitButton.setAttribute("value", "Please fill in all required details!");
+  }
+
+  const deliveryFormElements = document.querySelectorAll("#delivery-form [required]:not([type=\"email\"])");
+  let allRequiredDeliveryFormElementsFilled = true;
+  for (let formElement of deliveryFormElements) {
+    if (formElement.type == "text" && !formElement.value) {
+      allRequiredDeliveryFormElementsFilled = false;
+    }
+  }
+
+  if (allRequiredDeliveryFormElementsFilled) {
+    sessionStorage.setItem("shippingCalculated", "true");
+  } else {
+    sessionStorage.setItem("shippingCalculated", "false");
+  }
+  updateTotalsCheckout();
+}
+
+function addInvalidClasses() {
+  const requiredFormElements = document.querySelectorAll("[required]");
+  for (let formElement of requiredFormElements) {
+    formElement.classList.add("form-element--required");
+  }
+}
+
+if (document.URL.includes("checkout.html")) {
+  sessionStorage.setItem("shippingCalculated", "false");
+  updateMainMarginBottom();
+  updateTotalsCheckout();
+  addFormEventListeners();
+}
+

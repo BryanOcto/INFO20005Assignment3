@@ -48,7 +48,7 @@
 }
 
 /* Default styles for fonts */
-p, a, input, li, legend, label, button, .product-card--out-of-stock .product-card__picture::before {
+p, a, input, li, legend, label, button, select, .product-card--out-of-stock .product-card__picture::before {
   line-height: var(--text-body-line-height);
   font-family: var(--body-font-family);
   font-weight: var(--body-regular-weight);

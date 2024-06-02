@@ -140,7 +140,7 @@
   /* Thanks https://stackoverflow.com/questions/49658425/flexbox-justify-self-flex-end-not-working */
   margin-left: auto;
 }
-.product-card__text-wrapper__prices p, .prices p, .total__sum-group__prices p, .prices__original-price, .prices__original-price--non-discounted {
+.product-card__text-wrapper__prices p, .prices p, .total__sum-group__prices p, .prices__original-price, .prices__original-price--non-discounted, .total__sum-group__total-price {
   font-style: italic;
   text-align: right;
   width: min-content;
@@ -148,7 +148,7 @@
 .product-card--dark .product-card__text-wrapper__info ul {
   color: var(--white);
 }
-.product-card__text-wrapper__prices p:not(:last-child), .prices p:not(:last-child), .total__sum-group__prices p, .prices__group p {
+.product-card__text-wrapper__prices p:not(:last-child), .prices p:not(:last-child), .total__sum-group__prices p, .prices__group p, .total__sum-group__total-price {
   padding: var(--space-sm-xs) var(--space-xs);
 }
 .product-card__text-wrapper__prices__discount, .prices__discount {

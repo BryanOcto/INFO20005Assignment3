@@ -365,58 +365,6 @@ header nav::before, .search::before {
   gap: var(--space-md);
 }
 
-.price-fieldset, .checkbox-fieldset {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: var(--space-sm);
-}
-.checkbox-fieldset {
-  grid-row-gap: var(--space-xs);
-}
-
-.price-fieldset__label {
-  font-style: italic;
-  width: 100%;
-}
-.price-fieldset__label input {
-  width: 100%;
-  margin-top: var(--space-xs);
-}
-
-.price-fieldset__legend, .checkbox-fieldset__legend {
-  grid-column: 1 / span 2;
-  margin-bottom: var(--space-xs);
-}
-.checkbox-fieldset__label, .news-and-events__form__label--checkbox {
-  display: flex;
-  align-items: center;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-}
-.checkbox-fieldset__label__box, .news-and-events__form__label--checkbox__box {
-  display: block;
-  width: var(--text-body-size--large);
-  height: var(--text-body-size--large);
-  border: var(--thinner-border);
-  background-color: var(--white);
-} 
-.news-and-events__form__label--checkbox__box {
-  border: none;
-}
-.checkbox-fieldset__label__box img, .news-and-events__form__label--checkbox__box img {
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-}
-.checkbox-fieldset__label input:checked + .checkbox-fieldset__label__box img, .news-and-events__form__label--checkbox input:checked + .news-and-events__form__label--checkbox__box img {
-  opacity: 1;
-}
-.checkbox-fieldset__label input, .news-and-events__form__label--checkbox input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
 /* Desktop */
 @media (min-width: 50em) {
   header {

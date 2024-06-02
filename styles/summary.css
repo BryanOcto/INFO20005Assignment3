@@ -30,7 +30,7 @@
   display: block;
   width: var(--decoration-size);
   height: var(--decoration-size);
-  background-image: url("./images/svg/decorativePattern.svg");
+  background-image: url("../images/svg/decorativePattern.svg");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -80,10 +80,10 @@
   background-position: center;
 }
 .total__product-pictures__img:first-child {
-  background-image: url("./images/raster/TTCBluishWhite1.webp");
+  background-image: url("../images/raster/TTCBluishWhite1.webp");
 }
 .total__product-pictures__img:last-child {
-  background-image: url("./images/raster/LeobogJuggleV21.png");
+  background-image: url("../images/raster/LeobogJuggleV21.png");
 }
 
 /* Last remarks */

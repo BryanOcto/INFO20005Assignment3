@@ -379,7 +379,7 @@ if (document.URL.includes("checkout.html")) {
 
 function setDetailsAndImage() {
   if (sessionStorage.getItem(productNames[0]) != null) {
-    const productObject = JSON.parse(sessionStorage.getItem(productNames[0]));
+    let productObject = JSON.parse(sessionStorage.getItem(productNames[0]));
 
     const TTCNumItemsSpan = document.querySelector("#ttc-price .total__sum-group-wrapper :last-child span");
     const TTCTotalPriceSpan = document.querySelector("#ttc-price .prices__original-price--non-discounted span");
@@ -390,7 +390,7 @@ function setDetailsAndImage() {
     document.querySelector(".total__product-pictures__img:first-child").classList.add("hidden");
   }
   if (sessionStorage.getItem(productNames[1]) != null) {
-    const productObject = JSON.parse(sessionStorage.getItem(productNames[0]));
+    let productObject = JSON.parse(sessionStorage.getItem(productNames[0]));
 
     const LeobogNumItemsSpan = document.querySelector("#leobog-price .total__sum-group-wrapper :last-child span");
     const LeobogTotalPriceSpan = document.querySelector("#leobog-price .prices__original-price--non-discounted span");

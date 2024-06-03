@@ -10,5 +10,6 @@ function updateScrollPaddingTop() {
   } else {
     offset = `${breadcrumbs.offsetHeight}px`;
   }
+  console.log(offset);
   document.getElementsByTagName("html")[0].style.scrollPaddingTop = offset;
 }

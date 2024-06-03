@@ -147,22 +147,26 @@ function removeProduct(productCard, productName) {
 const buttonHeight = 70;
 function updateMainMarginBottom() {
   const main = document.getElementsByTagName("main")[0];
-  const totalSection = document.querySelector(".total");
-  if (window.innerWidth >= desktopSmallWidth) {
-    if (document.URL.includes("checkout.html")) {
-      if (window.innerWidth < desktopWidth) {
-        main.style.marginBottom = `${totalSection.offsetHeight}px`;
-      } else {
-        main.style.marginBottom = "0";
-        const paymentSection = document.querySelector("#form > section:nth-child(2)");
-        paymentSection.style.marginBottom = `${totalSection.offsetHeight}px`;
-      }
+
+  if (document.URL.includes("checkout.html")) {
+    const totalSection = document.querySelector(".total");
+    if (window.innerWidth < desktopWidth) {
+      main.style.marginBottom = `${totalSection.offsetHeight}px`;
     } else {
       main.style.marginBottom = "0";
+      const paymentSection = document.querySelector("#form > section:nth-child(2)");
+      paymentSection.style.marginBottom = `${totalSection.offsetHeight}px`;
     }
-    return;
+  } else if (document.URL.includes("product")) {
+    const addToCartSection = document.querySelector(".add-to-cart");
+    if (window.innerWidth < desktopWidth) {
+      main.style.marginBottom = `${addToCartSection.offsetHeight + buttonHeight}px`;
+    } else {
+      main.style.marginBottom = `${addToCartSection.offsetHeight}px`;
+    }
+  } else {
+    main.style.marginBottom = "0";
   }
-  main.style.marginBottom = `${buttonHeight + totalSection.offsetHeight}px`;
 }
 
 function updateTotals() {

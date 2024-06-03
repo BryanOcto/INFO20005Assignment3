@@ -191,13 +191,3 @@ input[type="checkbox" i]:focus + .checkbox-fieldset__label__box {
   border: none;
   cursor: pointer;
 }
-
-/* Option */
-
-/* tmp */
-/* main img {
-  width: 50%;
-} */
-/* a > img {
-  width: 30px;
-} */
